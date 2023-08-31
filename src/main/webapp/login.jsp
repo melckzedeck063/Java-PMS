@@ -1,3 +1,12 @@
+<%-- 
+    Document   : login.jsp
+    Created on : 30 Aug 2023, 11:07:45 am
+    Author     : user
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %> 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,15 +22,85 @@
 
     <!-- local -->
     <link rel="stylesheet" href="index.css">
+    <style>
+        .msg{
+            background: green;
+            color: white;
+            padding: 3px;
+            width : 20%;
+            margin: auto;
+        }
+    </style>
+    
+    <%
+    if(request.getMethod().equals("POST")){
+    
+    String username = request.getParameter("username");
+    String password = request.getParameter("password");
+    
+         Connection conn = null;
+    try {
+        String url = "jdbc:mysql://localhost:3306/IPT1";
+        String user = "root";
+        String passcode = "";
+
+        // Load the MySQL JDBC driver
+        Class.forName("com.mysql.jdbc.Driver");
+
+        // Establish the connection
+        conn = DriverManager.getConnection(url, user, passcode);
+        out.println("Connected to the database!");
+        
+        String select_query = "SELECT * FROM users WHERE email=? AND password =?";
+        PreparedStatement preparedStatement = conn.prepareStatement(select_query);
+        
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, password);
+        
+        ResultSet resultSet = preparedStatement.executeQuery();
+            conn.close();
+     
+     out.println("<p class='msg'> Login succesfull </p>");
+     %>
+     <script>
+        setTimeout(() => {
+            window.location  =  "newjsp.jsp";
+        }, 4000);
+     </script>
+     <%
+     out.println(resultSet);
+
+    } catch (ClassNotFoundException e) {
+        out.println("JDBC driver not found!");
+    } catch (SQLException e) {
+        out.println("Error connecting to the database: " + e.getMessage());
+    } finally {
+        // Close the connection
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                out.println("Error connecting to the database: " + e.getMessage());
+            }
+        }
+    }
+    }
+    else {
+    
+    }
+    
+%>    
+
 </head>
 
+
 <body>
-    <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:-60%;">
-    </div>
+
+       <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:-60%;"></div>
     <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:60%;">
     </div>
     <div class="container">
-        <form class="registration_box" action="">
+        <form class="registration_box" action="" method="POST">
             <div class="reg_items">
                 <div onclick="window.location='register.html'">Register</div>
                 <div class="active" onclick="window.location='login.html'">Login</div>
@@ -41,6 +120,8 @@
         </form>
 
     </div>
+
+
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
@@ -49,6 +130,6 @@
     <script>
         AOS.init();
     </script>
-</body>
+    </body>
 
 </html>
