@@ -1,11 +1,11 @@
 <%-- 
     Document   : login.jsp
-    Created on : 30 Aug 2023, 11:07:45 am
+    Created on : 30 Aug 2023, 11:07:45?am
     Author     : user
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %> 
+<%@ include file="Dbconnection.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,65 +30,86 @@
             width : 20%;
             margin: auto;
         }
+        .err_msg{
+            background: red;
+            color: white;
+            padding: 3px;
+            width : 20%;
+            margin: auto;
+        }
     </style>
     
-    <%
-    if(request.getMethod().equals("POST")){
+    <%    
+if(request.getMethod().equals("POST")){
     
-    String username = request.getParameter("username");
-    String password = request.getParameter("password");
+    String username = request.getParameter("email");
+    String password = request.getParameter("passcode");
     
-         Connection conn = null;
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    
+        
     try {
-        String url = "jdbc:mysql://localhost:3306/IPT1";
-        String user = "root";
-        String passcode = "";
-
-        // Load the MySQL JDBC driver
-        Class.forName("com.mysql.jdbc.Driver");
-
-        // Establish the connection
-        conn = DriverManager.getConnection(url, user, passcode);
-        out.println("Connected to the database!");
         
-        String select_query = "SELECT * FROM users WHERE email=? AND password =?";
-        PreparedStatement preparedStatement = conn.prepareStatement(select_query);
-        
-        preparedStatement.setString(1, username);
-        preparedStatement.setString(2, password);
-        
-        ResultSet resultSet = preparedStatement.executeQuery();
-            conn.close();
-     
-     out.println("<p class='msg'> Login succesfull </p>");
-     %>
-     <script>
-        setTimeout(() => {
-            window.location  =  "newjsp.jsp";
-        }, 4000);
-     </script>
-     <%
-     out.println(resultSet);
+        connection = (Connection) application.getAttribute("dbConnection");
 
-    } catch (ClassNotFoundException e) {
-        out.println("JDBC driver not found!");
-    } catch (SQLException e) {
-        out.println("Error connecting to the database: " + e.getMessage());
-    } finally {
-        // Close the connection
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                out.println("Error connecting to the database: " + e.getMessage());
+        if(connection != null){
+            if(username != "" && password != ""){
+
+            String select_query = "SELECT * FROM users WHERE email=? AND password =?";
+            preparedStatement = connection.prepareStatement(select_query);
+            
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            
+            resultSet = preparedStatement.executeQuery();
+//                connection.close();
+         
+             if(resultSet.next()){
+             out.println("<p class='msg'> Login succesfull </p>");
+              %>
+          <script>
+            setTimeout(() => {
+                window.location  =  "register.jsp";
+            }, 4000);
+            </script>
+         <%
+        }
+        else {
+           out.println("<p class='err_msg'> Login failed please try again </p>");
+        }
+             }
             }
+        else {          
+             out.println(" <p class='err_msg'> Database connection failed </p>");      
+        }
+
+    } catch (SQLException e) {
+        
+       out.println("<p class='err_msg'> " + e.getMessage()+ "</p>");
+          } 
+         finally {
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            // Handle exception if necessary
         }
     }
-    }
+
+}
     else {
     
-    }
-    
+    } 
+
 %>    
 
 </head>
@@ -132,4 +153,5 @@
     </script>
     </body>
 
+    
 </html>
