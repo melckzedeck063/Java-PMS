@@ -141,6 +141,9 @@
                             //                connection.close();
 
                             if (resultSet.next()) {
+                            session.setAttribute("username", username);
+                            session.setAttribute("fname", resultSet.getString("firstname"));
+                            session.setAttribute("lname", resultSet.getString("lastname"));
 
         %>
     <div class='toUp'>
@@ -154,7 +157,7 @@
             easing: 'linear'
         });
          setTimeout(() => {
-           window.location="dashboard.html";
+           window.location="dashboard.jsp";
         }, 2000);
         }, 3000);
     </script>
