@@ -24,20 +24,19 @@
     <!-- local -->
     <link rel="stylesheet" href="index.css">
     
-    <%
+    
+</head>
+
+<%
         Connection connection = (Connection) application.getAttribute("dbConnection");
 
         if(connection != null){
-            out.println("database connection established succesfully");
-        }
-        else {
-            out.println("database connection failed");
-        }
-    %>
-</head>
+//            out.println("database connection established succesfully");
+            
+      %>
 
-<body>
-<!--    <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:-60%;">
+      <body>
+    <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:-60%;">
     </div>
     <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:60%;">
     </div>
@@ -103,7 +102,16 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-    </script>-->
+    </script>
 </body>
+
+
+<%      
+        }
+        else {
+            out.println("database connection failed");
+        }
+    %>
+
 
 </html>
