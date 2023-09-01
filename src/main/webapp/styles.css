@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lora&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 :root{
     --green:rgb(51, 255, 0);
     --blue: rgb(0, 110, 255);
