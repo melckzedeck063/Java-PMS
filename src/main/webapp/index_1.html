@@ -18,18 +18,22 @@
 <body>
     <div class="simple_nav">
         <div class="container">
-            <a href="login.jsp">Sign In</a>
+            <a href="login.html">Sign In</a>
         </div>
     </div>
     <div class="container">
         <div class="banner_home">
-            <div class="title">
+            <div class="title" data-aos="fade-up">
                 <h1><span>Pharmacy Management System</span></h1>
             </div>
-            <span>Start making evaluation and Prediction to your future products</span>
+            <div class="" data-aos="fade-up">
+                <span>Start making evaluation and Prediction to your future products</span>
+            </div>
             <br>
-            <span class="small italic" style="color: gray;">-- Greatest wealth is health --</span>
-            <div class="button">
+            <div class="" data-aos="fade-up">
+                <span class="small italic" style="color: gray;">-- Greatest health is Wealth --</span>
+            </div>
+            <div class="button" data-aos="fade-up">
                 <button class=" mrg-100" onclick="window.location='register.html'">Register</button>
             </div>
         </div>
@@ -41,7 +45,9 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            duration:1500
+        });
     </script>
 </body>
 

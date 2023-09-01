@@ -1,3 +1,13 @@
+<%-- 
+    Document   : register.jsp
+    Created on : 31 Aug 2023, 10:43:42?am
+    Author     : user
+--%>
+
+
+<%@page import ="java.sql.*" %>
+<%@ include file="Dbconnection.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,10 +24,20 @@
     <!-- local -->
     <link rel="stylesheet" href="index.css">
     
+    <%
+        Connection connection = (Connection) application.getAttribute("dbConnection");
+
+        if(connection != null){
+            out.println("database connection established succesfully");
+        }
+        else {
+            out.println("database connection failed");
+        }
+    %>
 </head>
 
 <body>
-    <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:-60%;">
+<!--    <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:-60%;">
     </div>
     <div class="bubble" style="--width:100vw;--height:100vw;--top:-100%;--left:60%;">
     </div>
@@ -83,7 +103,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-    </script>
+    </script>-->
 </body>
 
 </html>
