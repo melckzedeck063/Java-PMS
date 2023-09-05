@@ -223,9 +223,8 @@
         AOS.init({
             duration: 1500
         });
-        jQuery.noConflict();
         setTimeout(() => {
-            jQuery(".pre_loader").fadeOut({
+            $(".pre_loader").fadeOut({
                 duration: 500,
                 easing: 'linear'
             });
