@@ -74,7 +74,7 @@
                 <div class="col-xl-12">
                     <ul class="menu">
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="dashboard.html" class="dropdown">
                                 <i class="bi bi-buildings-fill"></i>
                                 <span> Dashboard</span>
                             </a>
@@ -86,7 +86,7 @@
                             </a>
                             <ul class="list_dropdown">
                                 <li><a href="store.html"><i class="bi bi-chevron-double-right"></i> In Store</a></li>
-                                <li><a href=""><i class="bi bi-chevron-double-right"></i> New Item</a></li>
+                                <li><a href="newItem.html"><i class="bi bi-chevron-double-right"></i> New Item</a></li>
                             </ul>
                         </li>
                         <li class="nested_list">
@@ -95,31 +95,31 @@
                                 <span>Employees <i class="bi bi-arrow-right-circle-fill drop"></i></span>
                             </a>
                             <ul class="list_dropdown">
-                                <li><a href=""><i class="bi bi-chevron-double-right"></i> All Employees</a></li>
-                                <li><a href=""><i class="bi bi-chevron-double-right"></i> Add Employee</a></li>
+                                <li><a href="allEmployee.html"><i class="bi bi-chevron-double-right"></i> All Employees</a></li>
+                                <li><a href="newEmployee.html"><i class="bi bi-chevron-double-right"></i> Add Employee</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="profile.html" class="dropdown">
                                 <i class="bi bi-person-fill"></i>
                                 <span> Profile</span>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="sales.html" class="dropdown">
                                 <i class="bi bi-box-seam-fill"></i>
                                 <span> Sales</span>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="reports.html" class="dropdown">
                                 <i class="bi bi-body-text"></i>
                                 <span> Reports</span>
                             </a>
                         </li>
-                        
+
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="login.html" class="dropdown">
                                 <i class="bi bi-shield-fill"></i>
                                 <span> Log Out</span>
                             </a>
@@ -199,18 +199,18 @@
                 <div class="box_full_template_grid " style="--width:100%;--h:250px;">
                     <div class="number">
                         <div class="title text-center mt-5">
-                            <h1><span>MEDICINE LITTLE</span></h1>
+                            <div class="loader"></div>
                         </div>
                     </div>
                 </div>
-                 <div class="box_full_template_grid " style="--width:100%;--h:250px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" id="donutchart">
                     <div class="number">
                         <div class="title text-center mt-5">
-                            <h1><span>CHART</span></h1>
+                            <div class="loader"></div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -234,6 +234,29 @@
         //         jQuery(".list_dropdown").addClass("clicked");
         //     });
         // });
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
+        var total
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Available Doses', 'Hours per Day'],
+                ['Employeed', 11],
+                ['Expired', 2],
+                ['Sold', 2],
+                ['Buy', 2]
+            ]);
+
+            var options = {
+                title: 'GENERAL ACTIVITIES',
+                pieHole: 0.3,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
     </script>
 </body>
 

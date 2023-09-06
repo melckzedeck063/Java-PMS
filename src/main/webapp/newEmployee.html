@@ -89,7 +89,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="register.html" class="dropdown">
+                            <a href="reports.html" class="dropdown">
                                 <i class="bi bi-body-text"></i>
                                 <span> Reports</span>
                             </a>
@@ -172,24 +172,24 @@
                 </div>
             </div>
             <div class="grid_template_for_two">
-                <div class="box_full_template_grid " style="--width:100%;--h:250px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" onkeyup="return validate();">
                     <div class="title" style="
                         margin-top: 20px;
                         ">
                         <h4 style="font-weight: 100;">Add New User</h4>
                     </div>
-                    <div class="container">
-                        <input type="text" placeholder="Employee Name" name="employeeName">
-                        <div class=""></div>
-                        <input type="text" placeholder="Employee Address" name="employeeAddress">
-                        <div class=""></div>
-                        <input type="text" placeholder="Employee Id eg. pms-joedoe-01" name="employeeId">
-                        <div class=""></div>
-                        <input type="text" placeholder="Employee Contact eg. +255 628 272 363" name="employeeContact">
-                        <div class=""></div>
+                    <div class="container" onkeyup="preview()">
+                        <input type="text" placeholder="Employee Name" name="employeeName" id="employee_name">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        <input type="text" placeholder="Employee Address" name="employeeAddress" id="employee_address">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        <input type="text" placeholder="Employee Id eg. pms-joedoe-01" name="employeeId" id="employeeid">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        <input type="text" placeholder="Employee Contact eg. +255 628 272 363" name="employeeContact" id="employee_contact">
+                        <div class="" style="font-size: small;text-align: center;"></div>
 
                        <div class="button">
-                        <button id="bottonGet">Complete</button>
+                        <button id="buttonGet" onclick="return validate()">Complete</button>
                        </div>
                     </div>
                 </div>
@@ -199,10 +199,20 @@
                         ">
                         <h4 style="font-weight: 100;">Employee Profile Preview</h4>
                     </div>
-                    <div class="container">
+                    <div class="container mrg-100">
                         <div class="prev">
-                            <span><span>Username:</span>Paul Michael</span>
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i> Username: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
                         </div>
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i> Address: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
+                        </div>
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i> Employee Id: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
+                        </div>
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i>Contact: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -213,6 +223,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="new_user.js"></script>
     <script>
         AOS.init({
             duration: 1500
