@@ -43,7 +43,7 @@
             width: 100%;
             height: 100%;
             z-index: 10;
-            background-color: rgb(0, 0, 0);
+            background-color: var(--black);
         }
 
         .loading {
@@ -140,11 +140,10 @@
                         </div>
                         <div class="col-2 flex">
                             <div class="profile">
-                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1"
-                                    alt="" srcset="">
+                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt="" srcset="">
                             </div>
                             <div class="grid mt-20">
-                                <span class="white"> <%= fname + " " + lname %></span>
+                                <span class="white"><%= fname + " " + lname %></span>
                                 <div class="up">
                                     <span class="gray small italic">Administrator</span>
                                 </div>
@@ -190,7 +189,7 @@
                     </div>
                     <div class="number">
                         <div class="title text-center mt-2">
-                            <h1><span>55/70</span></h1>
+                            <h1><span>5570</span></h1>
                         </div>
                     </div>
                 </div>
@@ -215,16 +214,16 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         AOS.init({
             duration: 1500
         });
+        jQuery.noConflict();
         setTimeout(() => {
-            $(".pre_loader").fadeOut({
+            jQuery(".pre_loader").fadeOut({
                 duration: 500,
                 easing: 'linear'
             });

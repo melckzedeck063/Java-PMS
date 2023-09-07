@@ -43,7 +43,7 @@
             width: 100%;
             height: 100%;
             z-index: 10;
-            background-color: rgb(0, 0, 0);
+            background-color: var(--black);
         }
 
         .loading {
@@ -74,7 +74,7 @@
                 <div class="col-xl-12">
                     <ul class="menu">
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="dashboard.html" class="dropdown">
                                 <i class="bi bi-buildings-fill"></i>
                                 <span> Dashboard</span>
                             </a>
@@ -86,7 +86,7 @@
                             </a>
                             <ul class="list_dropdown">
                                 <li><a href="store.html"><i class="bi bi-chevron-double-right"></i> In Store</a></li>
-                                <li><a href=""><i class="bi bi-chevron-double-right"></i> New Item</a></li>
+                                <li><a href="newItem.html"><i class="bi bi-chevron-double-right"></i> New Item</a></li>
                             </ul>
                         </li>
                         <li class="nested_list">
@@ -95,31 +95,31 @@
                                 <span>Employees <i class="bi bi-arrow-right-circle-fill drop"></i></span>
                             </a>
                             <ul class="list_dropdown">
-                                <li><a href=""><i class="bi bi-chevron-double-right"></i> All Employees</a></li>
-                                <li><a href=""><i class="bi bi-chevron-double-right"></i> Add Employee</a></li>
+                                <li><a href="allEmployee.html"><i class="bi bi-chevron-double-right"></i> All Employees</a></li>
+                                <li><a href="newEmployee.html"><i class="bi bi-chevron-double-right"></i> Add Employee</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="profile.html" class="dropdown">
                                 <i class="bi bi-person-fill"></i>
                                 <span> Profile</span>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="sales.html" class="dropdown">
                                 <i class="bi bi-box-seam-fill"></i>
                                 <span> Sales</span>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="reports.html" class="dropdown">
                                 <i class="bi bi-body-text"></i>
                                 <span> Reports</span>
                             </a>
                         </li>
-                        
+
                         <li>
-                            <a href="" class="dropdown">
+                            <a href="login.html" class="dropdown">
                                 <i class="bi bi-shield-fill"></i>
                                 <span> Log Out</span>
                             </a>
@@ -140,11 +140,10 @@
                         </div>
                         <div class="col-2 flex">
                             <div class="profile">
-                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1"
-                                    alt="" srcset="">
+                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt="" srcset="">
                             </div>
                             <div class="grid mt-20">
-                                <span class="white"> <%= fname + " " + lname %></span>
+                                <span class="white"><%= fname + " " + lname %></span>
                                 <div class="up">
                                     <span class="gray small italic">Administrator</span>
                                 </div>
@@ -190,7 +189,7 @@
                     </div>
                     <div class="number">
                         <div class="title text-center mt-2">
-                            <h1><span>55/70</span></h1>
+                            <h1><span>5570</span></h1>
                         </div>
                     </div>
                 </div>
@@ -199,32 +198,32 @@
                 <div class="box_full_template_grid " style="--width:100%;--h:250px;">
                     <div class="number">
                         <div class="title text-center mt-5">
-                            <h1><span>MEDICINE LITTLE</span></h1>
+                            <div class="loader"></div>
                         </div>
                     </div>
                 </div>
-                 <div class="box_full_template_grid " style="--width:100%;--h:250px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" id="donutchart">
                     <div class="number">
                         <div class="title text-center mt-5">
-                            <h1><span>CHART</span></h1>
+                            <div class="loader"></div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         AOS.init({
             duration: 1500
         });
+        jQuery.noConflict();
         setTimeout(() => {
-            $(".pre_loader").fadeOut({
+            jQuery(".pre_loader").fadeOut({
                 duration: 500,
                 easing: 'linear'
             });
@@ -234,6 +233,29 @@
         //         jQuery(".list_dropdown").addClass("clicked");
         //     });
         // });
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
+        var total
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Available Doses', 'Hours per Day'],
+                ['Employeed', 11],
+                ['Expired', 2],
+                ['Sold', 2],
+                ['Buy', 2]
+            ]);
+
+            var options = {
+                title: 'GENERAL ACTIVITIES',
+                pieHole: 0.3,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
     </script>
 </body>
 
