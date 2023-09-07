@@ -1,23 +1,10 @@
-<%-- 
-    Document   : dashboard
-    Created on : 1 Sept 2023, 10:54:55?am
-    Author     : user
---%>
-
-  <%@ include file="Dbconnection.jsp" %>
-  <%@page import="java.sql.*" %>
-  
-  <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
-  <% response.setHeader("Pragma", "no-cache"); %>
-  <% response.setDateHeader("Expires", 0); %>
-
-  <%-- Check if a session exists, if not, redirect to login page --%>
-  
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pharmacy Management System || Welcome</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Management System || New Item</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -45,48 +32,9 @@
             transform: translate(-50%, -50%);
         }
     </style>
-    </head>
-
-    
-   
-    <style>
-        .pre_loader {
-            position: fixed;
-            top: 0%;
-            left: 0%;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            background-color: rgb(0, 0, 0);
-        }
-
-        .loading {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            height: 100px;
-            width: 100px;
-            transform: translate(-50%, -50%);
-        }
-    </style>
 </head>
 
-<%
-    session = request.getSession(false);
-    
-    if(session == null){
-        response.sendRedirect("login.jsp");
-     }
-     else {
-     String username = (String)  session.getAttribute("username");
-    String fname = (String) session.getAttribute("fname");
-    String lname = (String)  session.getAttribute("lname");
-        if(username != null && !username.isEmpty()){
-    
-    
-    %>
-    
-    <body>
+<body>
     <div class="pre_loader">
         <div class="loading">
             <div class="loader"></div>
@@ -148,7 +96,7 @@
                         </li>
 
                         <li>
-                            <a href="logout.jsp" class="dropdown">
+                            <a href="login.html" class="dropdown">
                                 <i class="bi bi-shield-fill"></i>
                                 <span> Log Out</span>
                             </a>
@@ -172,7 +120,7 @@
                                 <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt="" srcset="">
                             </div>
                             <div class="grid mt-20">
-                                <span class="white"> <%= username %> </span>
+                                <span class="white">John Doe</span>
                                 <div class="up">
                                     <span class="gray small italic">Administrator</span>
                                 </div>
@@ -218,17 +166,27 @@
                     </div>
                     <div class="number">
                         <div class="title text-center mt-2">
-                            <h1><span>5570</span></h1>
+                            <h1><span>55/70</span></h1>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="grid_template_for_two">
                 <div class="box_full_template_grid " style="--width:100%;--h:250px;">
-                    <div class="number">
-                        <div class="title text-center mt-5">
-                            <div class="loader"></div>
-                        </div>
+                    <div class="title">
+                        <h4>Add New User</h4>
+                    </div>
+                    <div class="container">
+                        <input type="text" placeholder="Employee Name" name="employeeName">
+                        <div class=""></div>
+                        <input type="text" placeholder="Employee Address" name="employeeAddress">
+                        <div class=""></div>
+                        <input type="text" placeholder="Employee Id eg. pms-joedoe-01" name="employeeId">
+                        <div class=""></div>
+                        <input type="text" placeholder="Employee Contact eg. +255 628 272 363" name="employeeContact">
+                        <div class=""></div>
+
+                        <button id="bottonGet">Complete</button>
                     </div>
                 </div>
                 <div class="box_full_template_grid " style="--width:100%;--h:250px;" id="donutchart">
@@ -287,17 +245,7 @@
         }
     </script>
 </body>
-    
-<%
-     
-    }
-  else {
-   response.sendRedirect("login.jsp");
-}
-    }
-    
 
-    %>
-
+</html>
 
 </html>

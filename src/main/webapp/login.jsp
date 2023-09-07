@@ -6,6 +6,8 @@
 
 <%@page import="java.sql.*" %> 
 <%@ include file="Dbconnection.jsp" %>
+<% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<% response.setHeader("Pragma", "no-cache"); %>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,14 +1,15 @@
-
 @import url("styles.css");
-body{
+body {
     overflow-x: hidden;
     background-color: var(--black);
     color: var(--milk);
 }
-.center_allign{
+
+.center_allign {
     justify-content: center;
 }
-.top_bar{
+
+.top_bar {
     padding: 15px;
     background-color: var(--gray_color);
     justify-content: center;
@@ -18,33 +19,68 @@ body{
     border-radius: 10px;
     color: var(--black);
 }
-.side_bar{
+
+.side_bar {
     background-color: var(--gray_color);
     color: var(--black);
     height: 100vh;
 }
-.mrg_col{
+
+.mrg_col {
     margin: 50px !important;
 }
-.dashboard_grid_container{
+
+.dashboard_grid_container {
     position: relative;
     display: grid;
-    grid-template-columns: 250px auto;
+    grid-template-columns: 180px auto;
 }
-.dashboard_grid_container > div:nth-child(1){
+
+.dashboard_grid_container>div:nth-child(1) {
     background-color: var(--gray_color);
     animation: 1s fader linear infinite;
     height: 100vh;
     padding: 10px;
 }
-.box_full{
-    margin:20px;
+
+.grid_templated {
+    display: grid;
+    position: relative;
+    margin: 10px;
+    margin-top: -50px;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+}
+
+.box_full_template_grid {
     width: var(--width);
     border-radius: 10px;
-    min-height: 100px;
+    overflow: hidden;
+    min-height: var(--h);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.377);
     /* animation: 1s fader linear infinite; */
-    background-color: var(--gray_color);
+    background-color: var(--black);
 }
+rect {
+    background: var(--black) !important;
+    fill: var(--black) !important;
+}
+
+text {
+    color: var(--milk);
+    fill: var(--milk);
+}
+
+path {
+    stroke: var(--black);
+}
+
+table {
+    color: var(--blue);
+    fill: var(--blue) !important;
+}
+
+
 /* @keyframes fader {
     0%{
         opacity:100%;
@@ -55,44 +91,220 @@ body{
     }
 } */
 
-.profile{
+.profile {
     width: 40px;
     height: 40px;
     overflow: hidden;
-    border: 2px solid var(
-        --milk
-    );
+    border: 2px solid var(--milk);
     margin: 10px;
     border-radius: 50px;
     position: relative;
 }
-.profile img{
+
+.profile img {
     width: 100%;
     object-fit: contain;
 }
-.flex{
+
+.flex {
     display: flex;
 }
-.grid{
+
+.grid {
     display: grid;
 }
-.white{
-    color:rgb(255, 255, 255);
+
+.white {
+    color: rgb(255, 255, 255);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-.mt-20{
+
+.mt-20 {
     margin-top: 10px;
 }
-.up{
+
+.up {
     margin-top: -20px;
     position: relative;
 }
-.navtab{
+
+.navtab {
     width: 120%;
-    background: linear-gradient(90deg,rgb(53, 85, 180),rgb(35, 136, 35));
+    /* background: linear-gradient(90deg,rgb(180, 172, 53),rgb(0, 102, 255)); */
+    padding: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-.italic{
-    font-style: italic ;
+
+.italic {
+    font-style: italic;
+}
+
+.menu {
+    width: 100%;
+    position: relative;
+}
+
+.menu li {
+    position: relative;
+    width: 120%;
+    border-left: 3px solid transparent;
+    padding: 10px;
+    transition: .3s ease-in-out;
+    margin: 10px;
+    border-radius: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: -40px;
+    list-style-type: none;
+}
+
+.menu li:hover,
+.menu li:nth-child(1) {
+    position: relative;
+    width: 120%;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    padding: 10px;
+    transition: .3s ease-in-out;
+    border-radius: 10px;
+    margin-left: -40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    list-style-type: none;
+}
+
+.menu li .dropdown {
+    text-decoration: none;
+    color: var(--milk);
+    transition: .3s ease-in-out;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.menu li span {
+    font-size: small;
+}
+
+.menu li:hover .dropdown,
+.menu li:nth-child(1) .dropdown {
+    text-decoration: none;
+    color: var(--milk);
+    /* background: linear-gradient(60deg, var(--green), var(--blue));
+    background-clip: text;
+    -webkit-background-clip: text; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.box_full {
+    background-color: rgba(2, 0, 107, 0.507);
+    color: white;
+    height: 200px;
+}
+
+.box_full .col-10 {
+    justify-content: end;
+}
+
+
+/* .box_full .col-2,.box_full .col-10{
+    justify-content: end;
+} */
+
+.Search input {
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    outline: none;
+    color: var(--black);
+    /* box-shadow: inset 0px 0px 10px 0px rgb(14, 14, 14); */
+    border: 1px solid var(--shadow);
+}
+.Search input::placeholder{
+    color: var(--black);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: small;
+}
+.grid_template_for_two {
+    margin-top: 30px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto 40%;
+    gap: 20px;
+}
+
+.list_dropdown li,
+.list_dropdown li:hover,
+.list_dropdown li:nth-child(1),
+.list_dropdown li:nth-child(1):hover {
+    font-size: small;
+    padding: 0px;
+    margin-left: -20px;
+}
+
+.list_dropdown li a {
+    font-size: small;
+    color: gray;
+    text-decoration: none;
+    margin-left: 0px;
+}
+
+li .dropdown .drop {
+    position: absolute;
+    color: var(--milk);
+    margin: 4px;
+    transition: .3s ease-in-out;
+    transform: rotate(0deg);
+}
+
+li:hover .dropdown .drop {
+    position: absolute;
+    margin: 4px;
+    transform: rotate(90deg);
+    color: transparent;
+    background: linear-gradient(60deg, var(--green), var(--blue));
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+li .list_dropdown {
+    height: 0px;
+    position: relative;
+    overflow: hidden;
+    display: block !important;
+    color: var(--milk);
+    transition: .3s ease-in-out;
+}
+
+li:hover .list_dropdown {
+    display: block !important;
+    color: var(--milk);
+    animation: 1.5s dropdown ease-in-out;
+    height: 100%;
+}
+
+@keyframes dropdown {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 70px;
+    }
+}
+.grid_template_for_two input{
+   border-color: var(--green);
+}
+@media screen and (max-width:500px){
+    
+    .grid_template_for_two  {
+    position: relative;
+    width: 100%;
+    /* padding: 10px; */
+    border-radius: 10px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: none;
+    overflow: hidden;
+}
+
 }

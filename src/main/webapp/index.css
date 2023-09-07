@@ -1,39 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lora&display=swap');
-:root{
-    --green:rgb(51, 255, 0);
-    --blue: rgb(0, 110, 255);
-    --black:rgb(14, 14, 14);
-    --shadow:rgba(0, 0, 0, 0.171);
-    --milk:rgb(202, 202, 202);
-    --green-slim:rgba(60, 255, 0, 0.76);
-}
-body {
-    font-family: 'Lora', serif;
-    background-color: var(--black);
-    color: var(--milk) ;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Black Ops One', cursive;
-}
-.title h1{
-    font-size:70px;
-}
-.title h1 span,
-.title h2 span,
-.title h3 span,
-.title h4 span,
-.title h5 span{
-    color: transparent;
-    background: linear-gradient(60deg, var(--green),var(--blue));
-    background-clip: text;
-    -webkit-background-clip: text;
-}
+@import url("styles.css");
 .banner_home{
     position: absolute;
     top: 40%;
@@ -64,41 +29,6 @@ h6 {
 .simple_nav .container{
     text-align: end;
 }
-.mrg-100{
-    margin-top: 100px;
-    transition: .3s ease-in-out;
-}
-.mrg-100:hover{
-    margin-top: 70px;
-}
-button{
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid var(--green);
-    margin: 10px;
-    transition: .3s ease-in-out;
-    color: var(--milk);
-    background: none;
-}
-button:hover{
-    padding: 15px;
-    border-radius: 10px;
-    border:none;
-    margin: 10px;
-    color: var(--white);
-    background: none;
-    background-color:rgba(3, 255, 66, 0.247);
-}
-::selection{
-    background-color: var(--green);
-    color: var(--black);
-}
-.small{
-    font-size: small;
-}
-.italic{
-    font-style: italic;
-}
 .bubble{
     position: fixed;
     width: var(--width);
@@ -118,19 +48,10 @@ button:hover{
     transform: translate(-50%,-50%);
     z-index: 4;
     padding: 10px;
-    background-color: rgb(39, 39, 39);
+    background-color: var(--black);
     width: 500px;
     border-radius: 10px;
     text-align: center;
-}
-input,select{
-    background: none;
-    padding: 16px;
-    color: var(--green);
-    width: 100%;
-    border-radius: 10px;
-    font-size: small;
-    border: 1px solid var(--milk);
 }
 .grid_items select{
     color: var(--milk);
@@ -146,37 +67,16 @@ input,select{
     width: var(--width);
 
 }
-.gradient{
-    color: var(--black);
-    background: linear-gradient(60deg, transparent,var(--blue)) !important;
-    padding: 15px;
-    background-color: var(--milk) !important;
-    border-radius: 10px;
-    margin: 10px;  
-    min-width: 200px;
-    border: none;
-}
-.gradient:hover{
-    color: var(--black);
-    background: linear-gradient(60deg, transparent,var(--blue)) !important;
-    padding: 15px;
-    transition: .3s ease-in-out;
-    border-radius: 10px;
-    background-color: var(--green) !important;
-    margin: 10px;
-    min-width: 200px;
-    border: none;
-}
-option{
-    padding: 10px;
+.dialog{
+    font-size: 12px;
 }
 .reg_items{
-    background-color: rgb(39, 39, 39);
+    background-color: var(--black);
     position: absolute;
     top: -20px;
     left: 50%;
     /* padding: 15px; */
-    box-shadow: 0px 0px 10px 0px black;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.171);
     display: flex;
     border-radius: 50px;
     transform: translateX(-50%);
@@ -189,7 +89,7 @@ option{
     width: 100%;
 
     border-radius: 50px;
-    background-color: rgb(39, 39, 39);
+    background-color: var(--black);
 }
 .reg_items .active{
     text-decoration: none;
