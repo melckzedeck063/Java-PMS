@@ -94,7 +94,7 @@
     </div>
     <div class="dashboard_grid_container">
         <div class="dash_grid_items">
-            <div class="row">
+            <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                 <div class="col-xl-12 flex navtab">
                     <div class="title">
                         <h5>Phar<span>macy</span></h5>
@@ -160,7 +160,7 @@
         <div class="dash_grid_items">
             <div class="box_full" style="--width:100%">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                         <div class="col-10 flex">
                             <div class="input Search">
                                 <input type="text" placeholder="Search Package Name">
@@ -181,7 +181,7 @@
                 </div>
             </div>
             <div class="grid_templated">
-                <div class="box_full_template_grid " style="--width:100%; -h:150px;">
+                <div class="box_full_template_grid " style="--width:100%; -h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>AVAILABLE</span></h5>
                     </div>
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>EMPLOYED</span></h5>
                     </div>
@@ -201,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>EXPIRED</span></h5>
                     </div>
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>SOLD</span></h5>
                     </div>
@@ -223,7 +223,7 @@
                 </div>
             </div>
             <div class="grid_template_for_two">
-                <div class="box_full_template_grid " style="--width:100%;--h:250px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="number">
                         <div class="title text-center" style="margin-top: 10px;">
                             <!-- <div class="loader"></div> -->
@@ -233,7 +233,7 @@
 
                             
                             <div class="row" style="margin: 10px;justify-content: center;">
-                                <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;">
+                                <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
                                     <div class="profile">
                                         <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
                                     </div>
@@ -245,7 +245,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;">
+                            <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
                                     <div class="profile">
                                         <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
                                     </div>
@@ -257,7 +257,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;">
+                            <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
                                 <div class="profile">
                                     <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
                                 </div>
@@ -269,7 +269,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;">
+                        <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
                             <div class="profile">
                                 <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
                             </div>
@@ -284,13 +284,13 @@
 
 
                             </div>
-                            <div class="more text-center" style="margin:10px;margin-top: -10px;">
+                            <div class="more text-center" style="margin:10px;margin-top: -10px;" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                                 <a href="allEmployee.html" class="small">View All</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:250px;" id="donutchart">
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" id="donutchart" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="number">
                         <div class="title text-center mt-5">
                             <div class="loader"></div>

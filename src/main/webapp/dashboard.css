@@ -73,6 +73,7 @@ text {
 
 path {
     stroke: var(--black);
+    fill: var(--green-slim);
 }
 
 table {
