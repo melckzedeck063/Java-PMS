@@ -6,6 +6,8 @@
 
 <%@page import="java.sql.*" %> 
 <%@ include file="Dbconnection.jsp" %>
+<% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<% response.setHeader("Pragma", "no-cache"); %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -235,8 +237,8 @@
     <div class="container">
         <form class="registration_box" action="" method="POST">
             <div class="reg_items">
-                <div onclick="window.location = 'register.html'">Register</div>
-                <div class="active" onclick="window.location = 'login.html'">Login</div>
+                <div onclick="window.location = 'register.jsp'">Register</div>
+                <div class="active" onclick="window.location = 'login.jsp'">Login</div>
             </div>
             <div class="title" style="margin: 20px;margin-top: 50px;">
                 <h2><span>Login</span></h2>
@@ -268,7 +270,7 @@
                         document.getElementById("buttonGet").innerHTML = "";
                         document.getElementById("buttonGet").append(loader);
                         setTimeout(() => {
-                            window.location = "dashboard.html";
+                            window.location = "dashboard.jsp";
                         }, 4000);
                     });
     </script>

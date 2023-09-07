@@ -6,6 +6,11 @@
 
   <%@ include file="Dbconnection.jsp" %>
   <%@page import="java.sql.*" %>
+  
+  <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+  <% response.setHeader("Pragma", "no-cache"); %>
+  <% response.setDateHeader("Expires", 0); %>
+
   <%-- Check if a session exists, if not, redirect to login page --%>
   
 <!DOCTYPE html>
@@ -13,27 +18,36 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pharmacy Management System || Welcome</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 
     <!-- local -->
     <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .pre_loader {
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: var(--black);
+        }
+        
+        .loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 100px;
+            width: 100px;
+            transform: translate(-50%, -50%);
+        }
+    </style>
     </head>
 
-    <%
-
-    String username = (String)  session.getAttribute("username");
-    String fname = (String) session.getAttribute("fname");
-    String lname = (String)  session.getAttribute("lname");
-    if(session == null){
-        response.sendRedirect("login.jsp");
-    }
     
-
-    %>
    
     <style>
         .pre_loader {
@@ -57,6 +71,21 @@
     </style>
 </head>
 
+<%
+    session = request.getSession(false);
+    
+    if(session == null){
+        response.sendRedirect("login.jsp");
+     }
+     else {
+     String username = (String)  session.getAttribute("username");
+    String fname = (String) session.getAttribute("fname");
+    String lname = (String)  session.getAttribute("lname");
+        if(username != null && !username.isEmpty()){
+    
+    
+    %>
+
 <body>
     <div class="pre_loader">
         <div class="loading">
@@ -74,7 +103,7 @@
                 <div class="col-xl-12">
                     <ul class="menu">
                         <li>
-                            <a href="dashboard.html" class="dropdown">
+                            <a href="dashboard.jsp" class="dropdown">
                                 <i class="bi bi-buildings-fill"></i>
                                 <span> Dashboard</span>
                             </a>
@@ -119,12 +148,11 @@
                         </li>
 
                         <li>
-                            <a href="login.html" class="dropdown">
+                            <a href="logout.jsp" class="dropdown">
                                 <i class="bi bi-shield-fill"></i>
                                 <span> Log Out</span>
                             </a>
                         </li>
-                        <!-- <li><a href=""></a></li> -->
                     </ul>
                 </div>
             </div>
@@ -189,7 +217,7 @@
                     </div>
                     <div class="number">
                         <div class="title text-center mt-2">
-                            <h1><span>5570</span></h1>
+                            <h1><span>550</span></h1>
                         </div>
                     </div>
                 </div>
@@ -197,8 +225,68 @@
             <div class="grid_template_for_two">
                 <div class="box_full_template_grid " style="--width:100%;--h:250px;">
                     <div class="number">
-                        <div class="title text-center mt-5">
-                            <div class="loader"></div>
+                        <div class="title text-center" style="margin-top: 10px;">
+                            <!-- <div class="loader"></div> -->
+                            <div class="title">
+                                <h3><span class="slim">Employeed People</span></h3>
+                            </div>
+
+                            
+                            <div class="row" style="margin: 10px;justify-content: center;">
+                                <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;">
+                                    <div class="profile">
+                                        <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
+                                    </div>
+                                
+                                <div class="p-10" style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                                    <span class="">John Doe</span>
+                                    <div style="margin-top: -7px;">
+                                        <span class="gray small">Administrator</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;">
+                                    <div class="profile">
+                                        <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
+                                    </div>
+                                
+                                <div class="p-10" style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                                    <span class="">John Doe</span>
+                                    <div style="margin-top: -7px;">
+                                        <span class="gray small">Administrator</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;">
+                                <div class="profile">
+                                    <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
+                                </div>
+                            
+                            <div class="p-10" style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                                <span class="">John Doe</span>
+                                <div style="margin-top: -7px;">
+                                    <span class="gray small">Administrator</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;">
+                            <div class="profile">
+                                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
+                            </div>
+                        
+                        <div class="p-10" style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                            <span class="">John Doe</span>
+                            <div style="margin-top: -7px;">
+                                <span class="gray small">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                            </div>
+                            <div class="more text-center" style="margin:10px;margin-top: -10px;">
+                                <a href="allEmployee.html" class="small">View All</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -258,5 +346,16 @@
         }
     </script>
 </body>
+<%
+     
+    }
+  else {
+   response.sendRedirect("login.jsp");
+}
+    }
+    
+
+    %>
+
 
 </html>
