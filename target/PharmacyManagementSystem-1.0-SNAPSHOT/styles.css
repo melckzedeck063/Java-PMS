@@ -303,3 +303,10 @@ html,body{
     font-weight: 300;
     text-transform: uppercase;
 }
+#sales text{
+    font-size: x-small;
+    margin: 0px;
+}
+#sales g text:contains("Sales"){
+    display: none !important;
+}
