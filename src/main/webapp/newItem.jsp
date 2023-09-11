@@ -1,3 +1,11 @@
+
+<%@ include file="Dbconnection.jsp" %>
+  <%@page import="java.sql.*" %>
+  
+  <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+  <% response.setHeader("Pragma", "no-cache"); %>
+  <% response.setDateHeader("Expires", 0); %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,8 +39,80 @@
             width: 100px;
             transform: translate(-50%, -50%);
         }
+        .msg{
+            background: green;
+            color: white;
+            padding: 3px;
+            width : 20%;
+            margin: auto;
+        }
+        .err{
+            background: red;
+            color: white;
+            padding: 3px;
+            width : 20%;
+            margin: auto;
+        }
     </style>
 </head>
+
+<%
+    session = request.getSession(false);
+    
+    if(session == null){
+        response.sendRedirect("login.jsp");
+     }
+     else {
+     String username = (String)  session.getAttribute("username");
+    String fname = (String) session.getAttribute("fname");
+    String lname = (String)  session.getAttribute("lname");
+    int user = (Integer) session.getAttribute("user_id");
+    
+      if(username != null && !username.isEmpty()){
+    
+        if (request.getMethod().equals("POST")) {
+       
+       String productName= request.getParameter("product");
+       String brandName =  request.getParameter("brand");
+       String unit =  request.getParameter("unit");
+       String quantity =  request.getParameter("quantity");
+       String expire_date =  request.getParameter("date");
+       
+       Connection connection =  null;
+       PreparedStatement preparedStatement =  null;
+       ResultSet resultSet = null;
+       
+      try{
+         connection =  (Connection)  application.getAttribute("dbConnection");
+         if(connection != null){
+         if(productName  != "" && brandName != "" && unit  != "" && quantity != "" && expire_date  != ""){
+         
+         String insert_query = "INSERT INTO products (product_name, brand_name, quantity, unit, date_expired, registered_by) "
+         + "VALUES(?, ?, ?, ?, ?, ?)";
+         
+         preparedStatement = connection.prepareStatement(insert_query);
+         preparedStatement.setString(1,productName);
+         preparedStatement.setString(2,brandName);
+         preparedStatement.setString(3,quantity);
+         preparedStatement.setString(4,unit);
+         preparedStatement.setString(5,expire_date);
+         preparedStatement.setInt(6,user);
+         
+         preparedStatement.executeUpdate();
+         preparedStatement.close();
+     
+     connection.close();
+     
+     out.println("<p class='msg'> Registration succesfull </p>");
+     }
+   }
+ }
+    catch(Exception e){
+     out.println("<p> Error : " + e.getMessage() + " </p>");
+    }
+ }
+
+    %>
 
 <body>
     <div class="pre_loader">
@@ -179,20 +259,23 @@
                         <h4 style="font-weight: 100;">Add New Item</h4>
                     </div>
                     <div class="container">
-                        <input type="text" placeholder="Product Name" name="ProductName">
+                        <form action="" method="POST">
+                        <input type="text" placeholder="Product Name" name="product">
                         <div class=""></div>
-                        <input type="text" placeholder="Brand Name" name="BrandName">
+                        <input type="text" placeholder="Brand Name" name="brand">
                         <div class=""></div>
-                        <input type="text" placeholder="Product Quantity" name="Quantity">
+                        <input type="text" placeholder="Product Quantity" name="quantity">
                         <div class=""></div>
-                        <input type="text" placeholder="Item Unit " name="Unit">
+                        <input type="text" placeholder="Item Unit " name="unit">
                         <div class=""></div>
-                        <input type="text" placeholder="Valid Until " name="expire">
+                        <input type="date" placeholder="Valid Until " name="date">
+                        <!--<input type="text" value="<%= user %>" />-->
                         <div class=""></div>
 
                        <div class="button">
-                        <button id="bottonGet">Complete</button>
+                           <button type="submit" id="bottonGet">Complete</button>
                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="box_full_template_grid" style="--width:100%;--h:250px;" id="donutchar" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
@@ -258,5 +341,16 @@
         }
     </script>
 </body>
+
+<%
+     
+    }
+  else {
+   response.sendRedirect("login.jsp");
+}
+    }
+    
+
+    %>
 
 </html>

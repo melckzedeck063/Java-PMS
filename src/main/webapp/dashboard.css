@@ -57,7 +57,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     min-height: var(--h);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.377);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
     /* animation: 1s fader linear infinite; */
     background-color: var(--black);
 }
@@ -73,6 +73,7 @@ text {
 
 path {
     stroke: var(--black);
+    fill: var(--green-slim);
 }
 
 table {
@@ -95,7 +96,7 @@ table {
     width: 40px;
     height: 40px;
     overflow: hidden;
-    border: 2px solid var(--milk);
+    border: 2px solid var(--green);
     margin: 10px;
     border-radius: 50px;
     position: relative;
@@ -293,6 +294,127 @@ li:hover .list_dropdown {
 }
 .grid_template_for_two input{
    border-color: var(--green);
+}
+.banner_img{
+    width: 100%;
+    height:300px;
+    background-color: gray;
+}
+.dp_crossed{
+    position: relative;
+    width: 100%;
+}
+
+.dp_crossed > div{
+    position: relative;
+    width: 450px;
+    justify-content: end;
+    align-content: end;
+    align-items: end;
+    justify-self: end;
+    align-self: end;
+    text-align: end;
+    margin-right: 100px;
+    margin-top: -200px;
+    float: right;
+}
+.dp_crossed .banner_img, 
+.dp_crossed .shado{
+    width:100%;
+    height: 200px;
+    border-bottom-right-radius: 100px;
+    /* overflow: hidden; */
+    border-bottom-left-radius: 100px;
+
+}
+.dp_crossed .title{
+    padding: 10px;
+    text-align: start;
+}
+.dp_crossed .profile{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 5px solid var(--black);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.247);
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+.icons{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 2px;
+}
+.icons .icon{
+    padding: 1px;
+    border-radius: 50px;
+    color: var(--green);
+    margin: 4px;
+    height: 40px;
+    text-align: center;
+    width: 40px;
+    background-color: var(--green);
+    /* border: 1px solid var(--black); */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.137);
+}.icons .icon a:hover{
+    padding: 18px;
+}
+.icon a{
+    text-decoration: none;
+    text-align: center;
+    transition: .6s ease-in-out;
+    padding: 10px;
+    position: relative;
+    margin-top: -10px;
+    font-size: large;
+    color: var(--black);
+}
+.profile_details{
+    padding: 10px;
+    /* text-align: center; */
+    border-radius: 10px;
+}
+.title .common-grid{
+    background-color: var(--gray_color);
+}
+.update_box{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.151);
+}
+.update{
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: var(--black);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.185);
+}
+.update input{
+    margin: 10px;
+    width: 95%;
+    border-color: var(--green);
+    outline: none;
+
+}
+.cancel button{
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+}
+.cancel button i{
+    padding: -20px;
+    position: relative;
+    margin-top: -100px;
 }
 @media screen and (max-width:500px){
     

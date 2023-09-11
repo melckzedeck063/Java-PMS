@@ -146,6 +146,7 @@
                             session.setAttribute("username", username);
                             session.setAttribute("fname", resultSet.getString("firstname"));
                             session.setAttribute("lname", resultSet.getString("lastname"));
+                            session.setAttribute("user_id", resultSet.getInt("id"));
 
         %>
     <div class='toUp'>
@@ -237,8 +238,8 @@
     <div class="container">
         <form class="registration_box" action="" method="POST">
             <div class="reg_items">
-                <div onclick="window.location = 'register.html'">Register</div>
-                <div class="active" onclick="window.location = 'login.html'">Login</div>
+                <div onclick="window.location = 'register.jsp'">Register</div>
+                <div class="active" onclick="window.location = 'login.jsp'">Login</div>
             </div>
             <div class="title" style="margin: 20px;margin-top: 50px;">
                 <h2><span>Login</span></h2>
@@ -270,7 +271,7 @@
                         document.getElementById("buttonGet").innerHTML = "";
                         document.getElementById("buttonGet").append(loader);
                         setTimeout(() => {
-                            window.location = "dashboard.html";
+                            window.location = "dashboard.jsp";
                         }, 4000);
                     });
     </script>

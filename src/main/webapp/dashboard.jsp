@@ -57,7 +57,7 @@
             width: 100%;
             height: 100%;
             z-index: 10;
-            background-color: rgb(0, 0, 0);
+            background-color: var(--black);
         }
 
         .loading {
@@ -83,10 +83,9 @@
     String lname = (String)  session.getAttribute("lname");
         if(username != null && !username.isEmpty()){
     
-    
     %>
-    
-    <body>
+
+<body>
     <div class="pre_loader">
         <div class="loading">
             <div class="loader"></div>
@@ -94,7 +93,7 @@
     </div>
     <div class="dashboard_grid_container">
         <div class="dash_grid_items">
-            <div class="row">
+            <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                 <div class="col-xl-12 flex navtab">
                     <div class="title">
                         <h5>Phar<span>macy</span></h5>
@@ -103,7 +102,7 @@
                 <div class="col-xl-12">
                     <ul class="menu">
                         <li>
-                            <a href="dashboard.html" class="dropdown">
+                            <a href="dashboard.jsp" class="dropdown">
                                 <i class="bi bi-buildings-fill"></i>
                                 <span> Dashboard</span>
                             </a>
@@ -114,8 +113,8 @@
                                 <span>Store <i class="bi bi-arrow-right-circle-fill drop"></i></span>
                             </a>
                             <ul class="list_dropdown">
-                                <li><a href="store.html"><i class="bi bi-chevron-double-right"></i> In Store</a></li>
-                                <li><a href="newItem.html"><i class="bi bi-chevron-double-right"></i> New Item</a></li>
+                                <li><a href="store.jsp"><i class="bi bi-chevron-double-right"></i> In Store</a></li>
+                                <li><a href="newItem.jsp"><i class="bi bi-chevron-double-right"></i> New Item</a></li>
                             </ul>
                         </li>
                         <li class="nested_list">
@@ -153,7 +152,6 @@
                                 <span> Log Out</span>
                             </a>
                         </li>
-                        <!-- <li><a href=""></a></li> -->
                     </ul>
                 </div>
             </div>
@@ -161,7 +159,7 @@
         <div class="dash_grid_items">
             <div class="box_full" style="--width:100%">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                         <div class="col-10 flex">
                             <div class="input Search">
                                 <input type="text" placeholder="Search Package Name">
@@ -172,7 +170,7 @@
                                 <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt="" srcset="">
                             </div>
                             <div class="grid mt-20">
-                                <span class="white"> <%= username %> </span>
+                                <span class="white"><%= fname + " " + lname %></span>
                                 <div class="up">
                                     <span class="gray small italic">Administrator</span>
                                 </div>
@@ -182,7 +180,7 @@
                 </div>
             </div>
             <div class="grid_templated">
-                <div class="box_full_template_grid " style="--width:100%; -h:150px;">
+                <div class="box_full_template_grid " style="--width:100%; -h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>AVAILABLE</span></h5>
                     </div>
@@ -192,7 +190,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>EMPLOYED</span></h5>
                     </div>
@@ -202,7 +200,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>EXPIRED</span></h5>
                     </div>
@@ -212,26 +210,86 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>SOLD</span></h5>
                     </div>
                     <div class="number">
                         <div class="title text-center mt-2">
-                            <h1><span>5570</span></h1>
+                            <h1><span>550</span></h1>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="grid_template_for_two">
-                <div class="box_full_template_grid " style="--width:100%;--h:250px;">
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="number">
-                        <div class="title text-center mt-5">
-                            <div class="loader"></div>
+                        <div class="title text-center" style="margin-top: 10px;">
+                            <!-- <div class="loader"></div> -->
+                            <div class="title">
+                                <h3><span class="slim">Employeed People</span></h3>
+                            </div>
+
+                            
+                            <div class="row" style="margin: 10px;justify-content: center;">
+                                <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
+                                    <div class="profile">
+                                        <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
+                                    </div>
+                                
+                                <div class="p-10" style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                                    <span class="">John Doe</span>
+                                    <div style="margin-top: -7px;">
+                                        <span class="gray small">Administrator</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
+                                    <div class="profile">
+                                        <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
+                                    </div>
+                                
+                                <div class="p-10" style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                                    <span class="">John Doe</span>
+                                    <div style="margin-top: -7px;">
+                                        <span class="gray small">Administrator</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
+                                <div class="profile">
+                                    <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
+                                </div>
+                            
+                            <div class="p-10" style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                                <span class="">John Doe</span>
+                                <div style="margin-top: -7px;">
+                                    <span class="gray small">Administrator</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 flex" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">
+                            <div class="profile">
+                                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png" alt="" srcset="">
+                            </div>
+                        
+                        <div class="p-10" style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                            <span class="">John Doe</span>
+                            <div style="margin-top: -7px;">
+                                <span class="gray small">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                            </div>
+                            <div class="more text-center" style="margin:10px;margin-top: -10px;" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
+                                <a href="allEmployee.html" class="small">View All</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:250px;" id="donutchart">
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" id="donutchart" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="number">
                         <div class="title text-center mt-5">
                             <div class="loader"></div>
@@ -287,9 +345,10 @@
         }
     </script>
 </body>
-    
 <%
-     
+    
+    
+    
     }
   else {
    response.sendRedirect("login.jsp");
