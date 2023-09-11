@@ -259,6 +259,7 @@
          String expire  =  resultSet.getString("date_expired");
          String registered_date =  resultSet.getString("date_registered");
          
+         
          int user_id = resultSet.getInt("registered_by");
          String user_name = null;
          
@@ -300,7 +301,7 @@
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
-                        <h5><span> <%= expire %>  </span></h5>
+                        <h5><span> <%= expire.substring(0,10) %>  </span></h5>
                     </div>
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
