@@ -57,6 +57,7 @@
        Connection connection =  null;
        PreparedStatement preparedStatement =  null;
        ResultSet resultSet = null;
+      
        
        try{
          connection =  (Connection)  application.getAttribute("dbConnection");

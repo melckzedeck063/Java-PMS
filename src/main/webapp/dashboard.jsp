@@ -82,6 +82,24 @@
     String fname = (String) session.getAttribute("fname");
     String lname = (String)  session.getAttribute("lname");
         if(username != null && !username.isEmpty()){
+        
+         Connection connection = null;
+    Statement statement = null;
+    ResultSet resultSet = null;
+    int rowCount = 0;
+         
+           try {
+        connection = (Connection) application.getAttribute("dbConnection");
+
+        if (connection != null) {
+            statement = connection.createStatement();
+            String countQuery = "SELECT COUNT(*) FROM products"; // Replace 'your_table' with your actual table name
+            resultSet = statement.executeQuery(countQuery);
+
+            if (resultSet.next()) {
+                rowCount = resultSet.getInt(1); // Get the count from the first column
+            }
+        
     
     %>
 
@@ -182,11 +200,11 @@
             <div class="grid_templated">
                 <div class="box_full_template_grid " style="--width:100%; -h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
-                        <h5><span>AVAILABLE</span></h5>
+                        <h5><span>AVAILABLE ITEMS</span></h5>
                     </div>
                     <div class="number">
                         <div class="title text-center mt-2">
-                            <h1><span>95/90</span></h1>
+                            <h1><span> <%= rowCount %></span></h1>
                         </div>
                     </div>
                 </div>
@@ -347,7 +365,10 @@
 </body>
 <%
     
-    
+    }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
     
     }
   else {
