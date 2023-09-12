@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 31, 2023 at 09:29 AM
+-- Generation Time: Sep 12, 2023 at 09:28 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `PMS`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `brand_name` varchar(70) NOT NULL,
+  `quantity` int(5) NOT NULL,
+  `unit` varchar(50) NOT NULL,
+  `date_expired` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date_registered` date NOT NULL DEFAULT current_timestamp(),
+  `registered_by` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_name`, `brand_name`, `quantity`, `unit`, `date_expired`, `date_registered`, `registered_by`) VALUES
+(1, 'Panadol', 'Sheladol', 20, 'pills', '2024-11-21 21:00:00', '2023-09-11', 1),
+(2, 'Septrin', 'Sheladol', 15, 'pills', '2025-01-09 21:00:00', '2023-09-11', 1),
+(3, 'Diclofenac Gel', 'Sheladol', 5, 'Gel', '2025-06-02 21:00:00', '2023-09-11', 1);
 
 -- --------------------------------------------------------
 
@@ -50,6 +76,13 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `phone`, `password`
 --
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `registered_by` (`registered_by`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -60,10 +93,26 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`registered_by`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
