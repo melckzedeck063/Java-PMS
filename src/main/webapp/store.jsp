@@ -1,3 +1,9 @@
+
+<%@page import="java.sql.*" %> 
+<%@ include file="Dbconnection.jsp" %>
+<% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<% response.setHeader("Pragma", "no-cache"); %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +40,36 @@
     </style>
 </head>
 
+<%
+    session = request.getSession(false);
+    
+    if(session == null){
+        response.sendRedirect("login.jsp");
+     }
+     else {
+     String username = (String)  session.getAttribute("username");
+    String fname = (String) session.getAttribute("fname");
+    String lname = (String)  session.getAttribute("lname");
+    int user = (Integer) session.getAttribute("user_id");
+    
+      if(username != null && !username.isEmpty()){
+      
+       Connection connection =  null;
+       PreparedStatement preparedStatement =  null;
+       ResultSet resultSet = null;
+      
+       
+       try{
+         connection =  (Connection)  application.getAttribute("dbConnection");
+         if(connection != null){
+         
+        
+      
+         
+         
+    
+      
+    %>
 <body>
     <div class="pre_loader">
         <div class="loading">
@@ -207,42 +243,70 @@
                     </div>
                 </div>
 
+     
+                <%
+                    
+                     String select_query = "SELECT * FROM products" ;
+         Statement statement = connection.createStatement() ;
+         resultSet = statement.executeQuery(select_query);
+         
+         while(resultSet.next()){
+         int product_id = resultSet.getInt("product_id");
+         String product  =  resultSet.getString("product_name");
+         String  brand =  resultSet.getString("brand_name");
+         int quantity = resultSet.getInt("quantity");
+         String unit =  resultSet.getString("unit");
+         String expire  =  resultSet.getString("date_expired");
+         String registered_date =  resultSet.getString("date_registered");
+         
+         
+         int user_id = resultSet.getInt("registered_by");
+         String user_name = null;
+         
+         String selectUserQuery = "SELECT firstname, lastname FROM users WHERE id=?";
+                    preparedStatement = connection.prepareStatement(selectUserQuery);
+                    preparedStatement.setInt(1, user_id);
 
+                    ResultSet userResult = preparedStatement.executeQuery();
+                    if (userResult.next()) {
+                        user_name = userResult.getString("firstname") + " " + userResult.getString("lastname");
+                    }
+    
+    %>
 
-
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
-                        <h5><span>Panadol Amoxiline</span></h5>
+                        <h5><span> <%= product %> </span></h5>
                     </div>
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
-                        <h5><span>RetexBriller</span></h5>
+                        <h5><span> <%= brand %> </span></h5>
                     </div>
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
-                        <h5><span>30 gm</span></h5>
+                        <h5><span>  <%= quantity %>  </span></h5>
                     </div>
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
-                        <h5><span>12 pkg</span></h5>
+                        <h5><span> <%= unit %>  </span></h5>
                     </div>
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
-                        <h5><span>Paulo Michael</span></h5>
+                        <h5><span> <%= user_name %>  </span></h5>
                     </div>
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
-                        <h5><span>13 june 2023</span></h5>
+                        <h5><span> <%= expire.substring(0,10) %>  </span></h5>
                     </div>
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
-                        <h5><span>Paulo Michael</span></h5>
+                        <h5><span> <%= registered_date %>  </span></h5>
                     </div>
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
@@ -252,7 +316,9 @@
                 </div>
              
 
-
+            <%
+                }
+    %>
 
 
             </div>
@@ -278,4 +344,20 @@
     </script>
 </body>
 
+
+<%
+       }
+}
+    catch(Exception e){
+     out.println("<p> Error : " + e.getMessage() + " </p>");
+    }
+    }
+  else {
+   response.sendRedirect("login.jsp");
+}
+    }
+    
+
+    %>
+    
 </html>
