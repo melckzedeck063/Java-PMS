@@ -1,10 +1,13 @@
-<%@ include file="Dbconnection.jsp" %>
+ <%@ include file="Dbconnection.jsp" %>
 <%@page import="java.sql.*" %>
   
   <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
   <% response.setHeader("Pragma", "no-cache"); %>
   <% response.setDateHeader("Expires", 0); %>
   
+  <%@ page import="java.security.MessageDigest" %>
+<%@ page import="java.math.BigInteger" %>
+<%@ page import="java.security.NoSuchAlgorithmException" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharmacy Management System || New Item</title>
+    <title>Pharmacy Management System || New Employee Add</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -39,25 +42,11 @@
             width: 100px;
             transform: translate(-50%, -50%);
         }
-        .msg{
-            background: green;
-            color: white;
-            padding: 3px;
-            width : 20%;
-            margin: auto;
-        }
-        .err{
-            background: red;
-            color: white;
-            padding: 3px;
-            width : 20%;
-            margin: auto;
-        }
     </style>
 </head>
-
 <%
-    session = request.getSession(false);
+    
+ session = request.getSession(false);
     
     if(session == null){
         response.sendRedirect("login.jsp");
@@ -69,49 +58,53 @@
     int user = (Integer) session.getAttribute("user_id");
     
       if(username != null && !username.isEmpty()){
-    
-        if (request.getMethod().equals("POST")) {
-       
-       String productName= request.getParameter("product");
-       String brandName =  request.getParameter("brand");
-       String unit =  request.getParameter("unit");
-       String quantity =  request.getParameter("quantity");
-       String expire_date =  request.getParameter("date");
-       
-       Connection connection =  null;
+      
+      if (request.getMethod().equals("POST")) {
+      
+      String firstname = request.getParameter("firstname") ;
+      String lastname =request.getParameter("lastname") ;
+      String  email = request.getParameter("email");
+      String phone =  request.getParameter("phone");
+      String password =  request.getParameter("password");
+      
+      String hashedPassword = hashPasswordMD5(password);
+      
+      Connection connection =  null;
        PreparedStatement preparedStatement =  null;
        ResultSet resultSet = null;
        
       try{
          connection =  (Connection)  application.getAttribute("dbConnection");
          if(connection != null){
-         if(productName  != "" && brandName != "" && unit  != "" && quantity != "" && expire_date  != ""){
          
-         String insert_query = "INSERT INTO products (product_name, brand_name, quantity, unit, date_expired, registered_by) "
-         + "VALUES(?, ?, ?, ?, ?, ?)";
-         
-         preparedStatement = connection.prepareStatement(insert_query);
-         preparedStatement.setString(1,productName);
-         preparedStatement.setString(2,brandName);
-         preparedStatement.setString(3,quantity);
-         preparedStatement.setString(4,unit);
-         preparedStatement.setString(5,expire_date);
-         preparedStatement.setInt(6,user);
-         
-         preparedStatement.executeUpdate();
-         preparedStatement.close();
-     
-     connection.close();
-     
-     out.println("<p class='msg'> Registration succesfull </p>");
-     }
-   }
- }
+         if (!firstname.isEmpty() && !lastname.isEmpty() && !email.isEmpty() && !phone.isEmpty() && !password.isEmpty()) {
+                    String insert_query = "INSERT INTO users (firstname, lastname, email, phone, password,role) VALUES (?, ?, ?, ?, ?,?)";
+                    preparedStatement = connection.prepareStatement(insert_query);
+                    preparedStatement.setString(1, firstname);
+                    preparedStatement.setString(2, lastname);
+                    preparedStatement.setString(3, email);
+                    preparedStatement.setString(4, phone);
+                    preparedStatement.setString(5, hashedPassword);
+                    preparedStatement.setString(6, "employee");
+
+                    int rowsAffected = preparedStatement.executeUpdate(); // Perform the INSERT operation
+
+                    if (rowsAffected > 0) {
+                        out.println("<p class='msg'>Registration successful</p>");
+                    } else {
+                        out.println("<p class='err_msg'>Registration failed</p>");
+                    }
+                } else {
+                    out.println("<p class='err_msg'>All fields are required</p>");
+                }         
+    }
+    }
     catch(Exception e){
      out.println("<p> Error : " + e.getMessage() + " </p>");
     }
- }
-
+      
+    }
+    
     %>
 
 <body>
@@ -125,7 +118,7 @@
             <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                 <div class="col-xl-12 flex navtab">
                     <div class="title">
-                        <h5>Phar<span style="color: var(--milk);">macy</span></h5>
+                        <h5>Phar<span>macy</span></h5>
                     </div>
                 </div>
                 <div class="col-xl-12">
@@ -187,7 +180,7 @@
             </div>
         </div>
         <div class="dash_grid_items">
-            <div class="box_full banner_gradient" style="--width:100%">
+            <div class="box_full" style="--width:100%">
                 <div class="container">
                     <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                         <div class="col-10 flex">
@@ -197,7 +190,7 @@
                         </div>
                         <div class="col-2 flex">
                             <div class="profile">
-                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt="" srcset="">
+                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt="">
                             </div>
                             <div class="grid mt-20">
                                 <span class="white">John Doe</span>
@@ -210,7 +203,7 @@
                 </div>
             </div>
             <div class="grid_templated">
-                <div class="box_full_template_grid " style="--width:100%; -h:150px;" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%; -h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>AVAILABLE</span></h5>
                     </div>
@@ -220,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>EMPLOYED</span></h5>
                     </div>
@@ -230,7 +223,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>EXPIRED</span></h5>
                     </div>
@@ -240,7 +233,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>SOLD</span></h5>
                     </div>
@@ -252,44 +245,60 @@
                 </div>
             </div>
             <div class="grid_template_for_two">
-                <div class="box_full_template_grid" style="--width:100%;--h:250px;" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" onkeyup="" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title" style="
                         margin-top: 20px;
                         ">
-                        <h4 style="font-weight: 100;">Add New Item</h4>
+                        <h4 style="font-weight: 100;">Add New User</h4>
                     </div>
-                    <div class="container">
-                        <form action="" method="POST">
-                        <input type="text" placeholder="Product Name" name="product">
-                        <div class=""></div>
-                        <input type="text" placeholder="Brand Name" name="brand">
-                        <div class=""></div>
-                        <input type="text" placeholder="Product Quantity" name="quantity">
-                        <div class=""></div>
-                        <input type="text" placeholder="Item Unit " name="unit">
-                        <div class=""></div>
-                        <input type="date" placeholder="Valid Until " name="date">
-                        <!--<input type="text" value="<%= user %>" />-->
-                        <div class=""></div>
+                    <div class="container" onkeyup="preview()">
+                      <form  action="" method="POST">
+                        <input type="text" placeholder="Employee Name" name="firstname" id="firstname">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        <input type="text" placeholder="Enter Last Name" name="lastname" id="lastname">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        <input type="text" placeholder="Employee Email" name="email" id="employee_address">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        <input type="text" placeholder="Employee Contact eg. +255 628 272 363" name="phone" id="employee_contact">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        <input type="password" placeholder="Enter Password" name="password" id="password">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        <input type="password" placeholder="Confirm Password" name="cpassword" id="cpassword">
+                        <div class="" style="font-size: small;text-align: center;"></div>
+                        
 
                        <div class="button">
-                           <button type="submit" id="bottonGet">Complete</button>
+                           <button id="buttonGet" type="submit" onclick="return validate()">Complete</button>
                        </div>
-                        </form>
+                       </form>
                     </div>
                 </div>
-                <div class="box_full_template_grid" style="--width:100%;--h:250px;" id="donutchar" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
-                    <div class="banner_img" style="background-image: url(https://plus.unsplash.com/premium_photo-1661281397737-9b5d75b52beb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80);background-size: cover;">
-                        <div class="shado" style="position: relative;width: 100%;height:100%;background-color: rgba(0, 68, 255, 0.226);"></div>
+                <div class="box_full_template_grid " style="--width:100%;--h:250px;" id="donutchar" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
+                    <div class="title" style="
+                        margin-top: 20px;
+                        ">
+                        <h4 style="font-weight: 100;">Employee Profile Preview</h4>
                     </div>
-                    <div class="" style="margin-bottom: 10px;">
-                        <div class="title">
-                            <h1><span>Attention!</span></h1>
-                            <span>Remember, your role as a pharmacist is to safeguard the health and well-being of your patients. Adhering to the law and maintaining the highest ethical standards in your practice is not only a legal requirement but also a moral obligation</span>
-                            <div class="button">
-                                <a href="https://www.who.int/health-topics/medicines">read more</a>
-                            </div>
+                    <div class="container mrg-100">
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i> Username: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
                         </div>
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i>  Last Name: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
+                        </div>
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i> Email: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
+                        </div>
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i> Contact: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
+                        </div>
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i> Password: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
+                        </div>
+                        <div class="prev">
+                            <span><span><i class="bi bi-check-circle" style="color:rgb(0, 218, 0);opacity:0%;"></i> Confirmation: </span><span style="font-weight: 100;font-size: small;" class="previewme"></span></span>
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -300,6 +309,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="new_user.js"></script>
     <script>
         AOS.init({
             duration: 1500
@@ -342,6 +352,7 @@
     </script>
 </body>
 
+
 <%
      
     }
@@ -350,7 +361,26 @@
 }
     }
     
-
     %>
-
+    
 </html>
+
+<%!
+    // Function to hash the password using MD5
+    private String hashPasswordMD5(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(password.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String md5 = number.toString(16);
+
+            // Pad with zeros to ensure it's 32 characters long
+            while (md5.length() < 32) {
+                md5 = "0" + md5;
+            }
+            return md5;
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+%>

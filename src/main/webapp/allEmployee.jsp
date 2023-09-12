@@ -1,10 +1,8 @@
+
+<%@page import="java.sql.*" %> 
 <%@ include file="Dbconnection.jsp" %>
-<%@page import="java.sql.*" %>
-  
-  <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
-  <% response.setHeader("Pragma", "no-cache"); %>
-  <% response.setDateHeader("Expires", 0); %>
-  
+<% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<% response.setHeader("Pragma", "no-cache"); %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +10,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharmacy Management System || New Item</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Pharmacy Management System || Welcome</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -30,7 +29,7 @@
             z-index: 10;
             background-color: var(--black);
         }
-        
+
         .loading {
             position: absolute;
             left: 50%;
@@ -39,24 +38,10 @@
             width: 100px;
             transform: translate(-50%, -50%);
         }
-        .msg{
-            background: green;
-            color: white;
-            padding: 3px;
-            width : 20%;
-            margin: auto;
-        }
-        .err{
-            background: red;
-            color: white;
-            padding: 3px;
-            width : 20%;
-            margin: auto;
-        }
     </style>
 </head>
 
-<%
+    <%
     session = request.getSession(false);
     
     if(session == null){
@@ -69,51 +54,24 @@
     int user = (Integer) session.getAttribute("user_id");
     
       if(username != null && !username.isEmpty()){
-    
-        if (request.getMethod().equals("POST")) {
-       
-       String productName= request.getParameter("product");
-       String brandName =  request.getParameter("brand");
-       String unit =  request.getParameter("unit");
-       String quantity =  request.getParameter("quantity");
-       String expire_date =  request.getParameter("date");
-       
+      
        Connection connection =  null;
        PreparedStatement preparedStatement =  null;
        ResultSet resultSet = null;
+      
        
-      try{
+       try{
          connection =  (Connection)  application.getAttribute("dbConnection");
          if(connection != null){
-         if(productName  != "" && brandName != "" && unit  != "" && quantity != "" && expire_date  != ""){
          
-         String insert_query = "INSERT INTO products (product_name, brand_name, quantity, unit, date_expired, registered_by) "
-         + "VALUES(?, ?, ?, ?, ?, ?)";
+        
+      
          
-         preparedStatement = connection.prepareStatement(insert_query);
-         preparedStatement.setString(1,productName);
-         preparedStatement.setString(2,brandName);
-         preparedStatement.setString(3,quantity);
-         preparedStatement.setString(4,unit);
-         preparedStatement.setString(5,expire_date);
-         preparedStatement.setInt(6,user);
          
-         preparedStatement.executeUpdate();
-         preparedStatement.close();
-     
-     connection.close();
-     
-     out.println("<p class='msg'> Registration succesfull </p>");
-     }
-   }
- }
-    catch(Exception e){
-     out.println("<p> Error : " + e.getMessage() + " </p>");
-    }
- }
-
+    
+      
     %>
-
+    
 <body>
     <div class="pre_loader">
         <div class="loading">
@@ -125,7 +83,7 @@
             <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                 <div class="col-xl-12 flex navtab">
                     <div class="title">
-                        <h5>Phar<span style="color: var(--milk);">macy</span></h5>
+                        <h5>Phar<span>macy</span></h5>
                     </div>
                 </div>
                 <div class="col-xl-12">
@@ -152,8 +110,10 @@
                                 <span>Employees <i class="bi bi-arrow-right-circle-fill drop"></i></span>
                             </a>
                             <ul class="list_dropdown">
-                                <li><a href="allEmployee.html"><i class="bi bi-chevron-double-right"></i> All Employees</a></li>
-                                <li><a href="newEmployee.html"><i class="bi bi-chevron-double-right"></i> Add Employee</a></li>
+                                <li><a href="allEmployee.html"><i class="bi bi-chevron-double-right"></i> All
+                                        Employees</a></li>
+                                <li><a href="newEmployee.html"><i class="bi bi-chevron-double-right"></i> Add
+                                        Employee</a></li>
                             </ul>
                         </li>
                         <li>
@@ -187,7 +147,7 @@
             </div>
         </div>
         <div class="dash_grid_items">
-            <div class="box_full banner_gradient" style="--width:100%">
+            <div class="box_full" style="--width:100%">
                 <div class="container">
                     <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
                         <div class="col-10 flex">
@@ -197,7 +157,8 @@
                         </div>
                         <div class="col-2 flex">
                             <div class="profile">
-                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt="" srcset="">
+                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1"
+                                    alt="" srcset="">
                             </div>
                             <div class="grid mt-20">
                                 <span class="white">John Doe</span>
@@ -210,7 +171,7 @@
                 </div>
             </div>
             <div class="grid_templated">
-                <div class="box_full_template_grid " style="--width:100%; -h:150px;" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%; -h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>AVAILABLE</span></h5>
                     </div>
@@ -220,7 +181,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>EMPLOYED</span></h5>
                     </div>
@@ -230,7 +191,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>EXPIRED</span></h5>
                     </div>
@@ -240,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title text-center mt-2">
                         <h5><span>SOLD</span></h5>
                     </div>
@@ -251,106 +212,148 @@
                     </div>
                 </div>
             </div>
-            <div class="grid_template_for_two">
-                <div class="box_full_template_grid" style="--width:100%;--h:250px;" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
-                    <div class="title" style="
-                        margin-top: 20px;
-                        ">
-                        <h4 style="font-weight: 100;">Add New Item</h4>
-                    </div>
-                    <div class="container">
-                        <form action="" method="POST">
-                        <input type="text" placeholder="Product Name" name="product">
-                        <div class=""></div>
-                        <input type="text" placeholder="Brand Name" name="brand">
-                        <div class=""></div>
-                        <input type="text" placeholder="Product Quantity" name="quantity">
-                        <div class=""></div>
-                        <input type="text" placeholder="Item Unit " name="unit">
-                        <div class=""></div>
-                        <input type="date" placeholder="Valid Until " name="date">
-                        <!--<input type="text" value="<%= user %>" />-->
-                        <div class=""></div>
 
-                       <div class="button">
-                           <button type="submit" id="bottonGet">Complete</button>
-                       </div>
-                        </form>
+             <div class=" container ">
+            <div class="common-grid " style="--grid-template:auto auto auto auto auto auto auto auto" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>First Name</span></h5>
                     </div>
                 </div>
-                <div class="box_full_template_grid" style="--width:100%;--h:250px;" id="donutchar" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
-                    <div class="banner_img" style="background-image: url(https://plus.unsplash.com/premium_photo-1661281397737-9b5d75b52beb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80);background-size: cover;">
-                        <div class="shado" style="position: relative;width: 100%;height:100%;background-color: rgba(0, 68, 255, 0.226);"></div>
-                    </div>
-                    <div class="" style="margin-bottom: 10px;">
-                        <div class="title">
-                            <h1><span>Attention!</span></h1>
-                            <span>Remember, your role as a pharmacist is to safeguard the health and well-being of your patients. Adhering to the law and maintaining the highest ethical standards in your practice is not only a legal requirement but also a moral obligation</span>
-                            <div class="button">
-                                <a href="https://www.who.int/health-topics/medicines">read more</a>
-                            </div>
-                        </div>
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Last Name</span></h5>
                     </div>
                 </div>
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Username</span></h5>
+                    </div>
+                </div>
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Telephone</span></h5>
+                    </div>
+                </div>
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Role</span></h5>
+                    </div>
+                </div>
+                
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Date Added</span></h5>
+                    </div>
+                </div>
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Actions</span></h5>
+                    </div>
+                </div>
+
+     
+                <%
+                    
+                     String select_query = "SELECT * FROM users" ;
+         Statement statement = connection.createStatement() ;
+         resultSet = statement.executeQuery(select_query);
+         
+         while(resultSet.next()){
+         int user_id = resultSet.getInt("id");
+         String firstname  =  resultSet.getString("firstname");
+         String  lastname =  resultSet.getString("lastname");
+         int email = resultSet.getInt("email");
+         String phone =  resultSet.getString("phone");
+         String role =  resultSet.getString("role");
+         String registered_date =  resultSet.getString("date_registered");
+         
+         
+        
+    
+    %>
+
+                <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span> <%= firstname %> </span></h5>
+                    </div>
+                </div>
+                <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span> <%= lastname %> </span></h5>
+                    </div>
+                </div>
+                <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>  <%= email %>  </span></h5>
+                    </div>
+                </div>
+                <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span> <%= phone %>  </span></h5>
+                    </div>
+                </div>
+                    
+                    <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span> <%= role %>  </span></h5>
+                    </div>
+                </div>
+                
+                <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span> <%= registered_date %>  </span></h5>
+                    </div>
+                </div>
+                <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Actions</span></h5>
+                    </div>
+                </div>
+             
+
+            <%
+                }
+    %>
+
 
             </div>
         </div>
+    
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+     <script src="https://code.jquery.com/jquery-3.7.0.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js "
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm "
+        crossorigin="anonymous "></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js "></script>
     <script>
         AOS.init({
             duration: 1500
         });
         jQuery.noConflict();
         setTimeout(() => {
-            jQuery(".pre_loader").fadeOut({
+            jQuery(".pre_loader ").fadeOut({
                 duration: 500,
                 easing: 'linear'
             });
         }, 2000);
-        // jQuery(".nested_list").ready(function(){
-        //     jQuery(this).on("click", function(){
-        //         jQuery(".list_dropdown").addClass("clicked");
-        //     });
-        // });
-        google.charts.load("current", {
-            packages: ["corechart"]
-        });
-        google.charts.setOnLoadCallback(drawChart);
-        var total
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Available Doses', 'Hours per Day'],
-                ['Employeed', 11],
-                ['Expired', 2],
-                ['Sold', 2],
-                ['Buy', 2]
-            ]);
-
-            var options = {
-                title: 'GENERAL ACTIVITIES',
-                pieHole: 0.3,
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-            chart.draw(data, options);
-        }
     </script>
+    
 </body>
-
 <%
-     
+ }
+}
+    catch(Exception e){
+     out.println("<p> Error : " + e.getMessage() + " </p>");
+    }
     }
   else {
    response.sendRedirect("login.jsp");
 }
     }
-    
 
-    %>
+%>
 
 </html>
