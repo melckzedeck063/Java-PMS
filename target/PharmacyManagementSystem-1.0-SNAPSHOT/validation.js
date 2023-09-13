@@ -35,7 +35,7 @@ function validation () {
                     if( passcode.value.length >= 7){
                         if(cpasscode.value === passcode.value){
                             alert('Passwords  match');
-                            window.location="login.html";
+                            window.location="login.jsp";
                             return true;
                         }
                     }

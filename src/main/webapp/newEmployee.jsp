@@ -120,70 +120,7 @@
             </div>
         </div>
         <div class="dash_grid_items">
-            <div class="box_full" style="--width:100%">
-                <div class="container">
-                    <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
-                        <div class="col-10 flex">
-                            <div class="input Search">
-                                <input type="text" placeholder="Search Package Name">
-                            </div>
-                        </div>
-                        <div class="col-2 flex">
-                            <div class="profile">
-                                <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt="">
-                            </div>
-                            <div class="grid mt-20">
-                                <span class="white">John Doe</span>
-                                <div class="up">
-                                    <span class="gray small italic">Administrator</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid_templated">
-                <div class="box_full_template_grid " style="--width:100%; -h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
-                    <div class="title text-center mt-2">
-                        <h5><span>AVAILABLE</span></h5>
-                    </div>
-                    <div class="number">
-                        <div class="title text-center mt-2">
-                            <h1><span>95/90</span></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
-                    <div class="title text-center mt-2">
-                        <h5><span>EMPLOYED</span></h5>
-                    </div>
-                    <div class="number">
-                        <div class="title text-center mt-2">
-                            <h1><span>123</span></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
-                    <div class="title text-center mt-2">
-                        <h5><span>EXPIRED</span></h5>
-                    </div>
-                    <div class="number">
-                        <div class="title text-center mt-2">
-                            <h1><span>95%</span></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="3000">
-                    <div class="title text-center mt-2">
-                        <h5><span>SOLD</span></h5>
-                    </div>
-                    <div class="number">
-                        <div class="title text-center mt-2">
-                            <h1><span>55/70</span></h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%@include file="topbar.jsp" %>
             <div class="grid_template_for_two">
                 <div class="box_full_template_grid " style="--width:100%;--h:250px;" onkeyup="" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                     <div class="title" style="
