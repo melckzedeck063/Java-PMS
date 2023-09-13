@@ -1,0 +1,15 @@
+
+.navtab{
+    border-bottom: 1px solid var(--green);
+    border-radius: 0px !important;
+}
+.navtab .title h5,.navtab .title span{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--milk);
+    text-transform: uppercase;
+}
+.navtab .title h5{
+    color: var(--green);
+}

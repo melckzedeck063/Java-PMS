@@ -146,6 +146,7 @@
                             session.setAttribute("username", username);
                             session.setAttribute("fname", resultSet.getString("firstname"));
                             session.setAttribute("lname", resultSet.getString("lastname"));
+                            session.setAttribute("user_id", resultSet.getInt("id"));
 
         %>
     <div class='toUp'>
