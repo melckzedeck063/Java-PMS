@@ -78,6 +78,8 @@
        
        String productName= request.getParameter("product");
        String brandName =  request.getParameter("brand");
+       String buying_price =  request.getParameter("b_price");
+       String selling_price =  request.getParameter("s_price");
        String unit =  request.getParameter("unit");
        String quantity =  request.getParameter("quantity");
        String expire_date =  request.getParameter("date");
@@ -91,24 +93,29 @@
          if(connection != null){
          if(productName  != "" && brandName != "" && unit  != "" && quantity != "" && expire_date  != ""){
          
-         String insert_query = "INSERT INTO products (product_name, brand_name, quantity, unit, date_expired, registered_by) "
-         + "VALUES(?, ?, ?, ?, ?, ?)";
+         String insert_query = "INSERT INTO products (product_name, brand_name,buying_price,selling_price, quantity, unit, date_expired, registered_by) "
+         + "VALUES(?, ?, ?, ?, ?, ?,?,?)";
          
          preparedStatement = connection.prepareStatement(insert_query);
          preparedStatement.setString(1,productName);
          preparedStatement.setString(2,brandName);
-         preparedStatement.setString(3,quantity);
-         preparedStatement.setString(4,unit);
-         preparedStatement.setString(5,expire_date);
-         preparedStatement.setInt(6,user);
+         preparedStatement.setString(3,buying_price);
+         preparedStatement.setString(4,selling_price);
+         preparedStatement.setString(5,quantity);
+         preparedStatement.setString(6,unit);
+         preparedStatement.setString(7,expire_date);
+         preparedStatement.setInt(8,user);
          
-         preparedStatement.executeUpdate();
-         preparedStatement.close();
-     
-     connection.close();
-     
-     out.println("<p class='msg'> Registration succesfull </p>");
-     }
+         int rowsAffected = preparedStatement.executeUpdate(); // Perform the INSERT operation
+
+                    if (rowsAffected > 0) {
+                        out.println("<p class='msg'>Registration successful</p>");
+                    } else {
+                        out.println("<p class='err_msg'>Registration failed</p>");
+                    }
+                } else {
+                    out.println("<p class='err_msg'>All fields are required</p>");
+                }         
    }
  }
     catch(Exception e){
@@ -268,12 +275,15 @@
                         <div class=""></div>
                         <input type="text" placeholder="Brand Name" name="brand">
                         <div class=""></div>
+                        <input type="text" placeholder="Buying Price" name="b_price">
+                        <div class=""></div>
+                        <input type="text" placeholder="Selling Price " name="s_price">
+                        <div class=""></div>
                         <input type="text" placeholder="Product Quantity" name="quantity">
                         <div class=""></div>
                         <input type="text" placeholder="Item Unit " name="unit">
                         <div class=""></div>
                         <input type="date" placeholder="Valid Until " name="date">
-                        <!--<input type="text" value="<%= user %>" />-->
                         <div class=""></div>
 
                        <div class="button">

@@ -200,7 +200,7 @@
             </div>
         </div>
         <div class=" container ">
-            <div class="common-grid " style="--grid-template:auto auto auto auto auto auto auto auto" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
+            <div class="common-grid " style="--grid-template:auto auto auto auto auto auto auto auto auto auto" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                 <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
                         <h5><span>Product Name</span></h5>
@@ -209,6 +209,16 @@
                 <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
                         <h5><span>Brand Name</span></h5>
+                    </div>
+                </div>
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Buying Price</span></h5>
+                    </div>
+                </div>
+                <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>Selling Price</span></h5>
                     </div>
                 </div>
                 <div class="grid-item " style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
@@ -255,6 +265,8 @@
          String product  =  resultSet.getString("product_name");
          String  brand =  resultSet.getString("brand_name");
          int quantity = resultSet.getInt("quantity");
+         int buying = resultSet.getInt("buying_price");
+         int selling = resultSet.getInt("selling_price");
          String unit =  resultSet.getString("unit");
          String expire  =  resultSet.getString("date_expired");
          String registered_date =  resultSet.getString("date_registered");
@@ -286,9 +298,21 @@
                 </div>
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
+                        <h5><span>  <%= buying %>  </span></h5>
+                    </div>
+                </div>
+                    <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
+                        <h5><span>  <%= selling %>  </span></h5>
+                    </div>
+                </div>
+
+                    <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                    <div class="title ">
                         <h5><span>  <%= quantity %>  </span></h5>
                     </div>
                 </div>
+
                 <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                     <div class="title ">
                         <h5><span> <%= unit %>  </span></h5>
