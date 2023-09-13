@@ -87,6 +87,7 @@
     Statement statement = null;
     ResultSet resultSet = null;
     int rowCount = 0;
+    int  userCount = 0;
          
            try {
         connection = (Connection) application.getAttribute("dbConnection");
@@ -99,6 +100,15 @@
             if (resultSet.next()) {
                 rowCount = resultSet.getInt(1); // Get the count from the first column
             }
+            
+           String countUsers = "SELECT COUNT(*) FROM users"; // Replace 'your_table' with your actual table name
+            resultSet = statement.executeQuery(countUsers);
+
+            if (resultSet.next()) {
+                userCount = resultSet.getInt(1); // Get the count from the first column
+            }
+            
+           
         
     
     %>
@@ -155,7 +165,7 @@
                     </div>
                     <div class="number">
                         <div class="title text-center mt-2">
-                            <h1><span>123</span></h1>
+                            <h1><span> <%= userCount %> </span></h1>
                         </div>
                     </div>
                 </div>

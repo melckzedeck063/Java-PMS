@@ -195,7 +195,7 @@
                                 </div>
                                 <div class=" container ">
                                     <div class="common-grid "
-                                        style="--grid-template:auto auto auto auto auto auto auto auto"
+                                        style="--grid-template:auto auto auto auto auto auto auto auto auto auto"
                                         data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                                         <div class="grid-item "
                                             style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
@@ -207,6 +207,18 @@
                                             style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
                                             <div class="title ">
                                                 <h5><span>Brand Name</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="grid-item "
+                                            style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                                            <div class="title ">
+                                                <h5><span>Buying Price</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="grid-item "
+                                            style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
+                                            <div class="title ">
+                                                <h5><span>Selling Price</span></h5>
                                             </div>
                                         </div>
                                         <div class="grid-item "
@@ -254,7 +266,9 @@
                                             product_id=resultSet.getInt("product_id"); String
                                             product=resultSet.getString("product_name"); String
                                             brand=resultSet.getString("brand_name"); int
-                                            quantity=resultSet.getInt("quantity"); String
+                                            quantity=resultSet.getInt("quantity"); int
+                                            buying=resultSet.getInt("buying_price"); int
+                                            selling=resultSet.getInt("selling_price"); String
                                             unit=resultSet.getString("unit"); String
                                             expire=resultSet.getString("date_expired"); String
                                             registered_date=resultSet.getString("date_registered"); int
@@ -283,10 +297,26 @@
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                                                 <div class="title ">
                                                     <h5><span>
+                                                            <%= buying %>
+                                                        </span></h5>
+                                                </div>
+                                            </div>
+                                            <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                                                <div class="title ">
+                                                    <h5><span>
+                                                            <%= selling %>
+                                                        </span></h5>
+                                                </div>
+                                            </div>
+
+                                            <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
+                                                <div class="title ">
+                                                    <h5><span>
                                                             <%= quantity %>
                                                         </span></h5>
                                                 </div>
                                             </div>
+
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                                                 <div class="title ">
                                                     <h5><span>
@@ -316,13 +346,15 @@
                                                 </div>
                                             </div>
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
-                                                <div class="title">
-                                                    <i class="bi bi-trash3-fill" style="color:red;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
-                        border-radius: 10px;"></i>
-                                                    <i class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);padding: 8px;margin: 3px;
-                        border-radius: 10px;"></i>
-                                                    <i class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
-                        border-radius: 10px;"></i>
+                                                <div class="title ">
+                                                    <div class="title">
+                                                        <i class="bi bi-trash3-fill" style="color:red;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
+border-radius: 10px;"></i>
+                                                        <i class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);padding: 8px;margin: 3px;
+border-radius: 10px;"></i>
+                                                        <i class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
+border-radius: 10px;"></i>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -339,19 +371,26 @@
                                         <button><i class="bi bi-x-lg"></i></button>
                                     </div>
                                     <div class="container">
-                                        <input type="text" placeholder="Product Name" name="ProductName" style="margin-top: 5px;margin-bottom: 5px;">
+                                        <input type="text" placeholder="Product Name" name="ProductName"
+                                            style="margin-top: 5px;margin-bottom: 5px;">
                                         <div class=""></div>
-                                        <input type="text" placeholder="Brand Name" name="BrandName" style="margin-top: 5px;margin-bottom: 5px;">
+                                        <input type="text" placeholder="Brand Name" name="BrandName"
+                                            style="margin-top: 5px;margin-bottom: 5px;">
                                         <div class=""></div>
-                                        <input type="text" placeholder="Product Quantity" name="Quantity" style="margin-top: 5px;margin-bottom: 5px;">
+                                        <input type="text" placeholder="Product Quantity" name="Quantity"
+                                            style="margin-top: 5px;margin-bottom: 5px;">
                                         <div class=""></div>
-                                        <input type="text" placeholder="Item Unit " name="Unit" style="margin-top: 5px;margin-bottom: 5px;">
+                                        <input type="text" placeholder="Item Unit " name="Unit"
+                                            style="margin-top: 5px;margin-bottom: 5px;">
                                         <div class=""></div>
-                                        <input type="text" placeholder="Valid Until " name="expire" style="margin-top: 5px;margin-bottom: 5px;">
+                                        <input type="text" placeholder="Valid Until " name="expire"
+                                            style="margin-top: 5px;margin-bottom: 5px;">
                                         <div class=""></div>
-                                        <input type="text" placeholder="Selling Price " name="selling" style="margin-top: 5px;margin-bottom: 5px;">
+                                        <input type="text" placeholder="Selling Price " name="selling"
+                                            style="margin-top: 5px;margin-bottom: 5px;">
                                         <div class=""></div>
-                                        <input type="text" placeholder="Buying Price " name="buying" style="margin-top: 5px;margin-bottom: 5px;">
+                                        <input type="text" placeholder="Buying Price " name="buying"
+                                            style="margin-top: 5px;margin-bottom: 5px;">
                                         <div class=""></div>
 
                                         <div class="button">
@@ -368,8 +407,8 @@
                                         <button><i class="bi bi-x-lg"></i></button>
                                     </div>
                                     <div class="title" style="
-                margin-top: 20px;
-                ">
+margin-top: 20px;
+">
                                         <h4 style="font-weight: 100;">Selling Product</h4>
                                     </div>
                                     <div class="container">
@@ -399,7 +438,7 @@
                             crossorigin="anonymous "></script>
                         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js "></script>
                         <script>
-                            AOS.init({
+                           AOS.init({
                                 duration: 1500
                             });
                             jQuery.noConflict();
