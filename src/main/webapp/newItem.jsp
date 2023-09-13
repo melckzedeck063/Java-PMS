@@ -66,8 +66,12 @@
      String username = (String)  session.getAttribute("username");
     String fname = (String) session.getAttribute("fname");
     String lname = (String)  session.getAttribute("lname");
-    int user = (Integer) session.getAttribute("user_id");
-    
+    int user = 0; // Default value if user_id is not set in the session
+
+// Check if the user_id attribute is set in the session
+     if (session.getAttribute("user_id") != null) {
+           user = (Integer) session.getAttribute("user_id");
+       }    
       if(username != null && !username.isEmpty()){
     
         if (request.getMethod().equals("POST")) {
