@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 12, 2023 at 09:28 AM
+-- Generation Time: Sep 13, 2023 at 09:29 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -31,6 +31,8 @@ CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `brand_name` varchar(70) NOT NULL,
+  `buying_price` int(8) NOT NULL,
+  `selling_price` int(8) NOT NULL,
   `quantity` int(5) NOT NULL,
   `unit` varchar(50) NOT NULL,
   `date_expired` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -42,10 +44,11 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `brand_name`, `quantity`, `unit`, `date_expired`, `date_registered`, `registered_by`) VALUES
-(1, 'Panadol', 'Sheladol', 20, 'pills', '2024-11-21 21:00:00', '2023-09-11', 1),
-(2, 'Septrin', 'Sheladol', 15, 'pills', '2025-01-09 21:00:00', '2023-09-11', 1),
-(3, 'Diclofenac Gel', 'Sheladol', 5, 'Gel', '2025-06-02 21:00:00', '2023-09-11', 1);
+INSERT INTO `products` (`product_id`, `product_name`, `brand_name`, `buying_price`, `selling_price`, `quantity`, `unit`, `date_expired`, `date_registered`, `registered_by`) VALUES
+(1, 'Panadol', 'Sheladol', 70, 100, 20, 'pills', '2023-09-13 07:11:56', '2023-09-11', 1),
+(2, 'Septrin', 'Sheladol', 65, 100, 15, 'pills', '2023-09-13 07:12:09', '2023-09-11', 1),
+(3, 'Diclofenac Gel', 'Sheladol', 3000, 4500, 5, 'Gel', '2023-09-13 07:12:29', '2023-09-11', 1),
+(4, 'Sedton syrup', 'Sedton', 3000, 4000, 10, 'solution', '2025-01-15 21:00:00', '2023-09-13', 1);
 
 -- --------------------------------------------------------
 
@@ -69,7 +72,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `phone`, `password`, `role`, `date_registered`) VALUES
-(1, 'Melckzedeck', 'James', 'zedeck063@gmail.com', '0744219981', 'zedeck123', 'admin', '2023-08-31');
+(1, 'Melckzedeck', 'James', 'zedeck063@gmail.com', '0744219981', 'zedeck123', 'admin', '2023-08-31'),
+(2, 'Loveness', 'James', 'loveness@gmail.com', '+255778134854', '18c9682703041dad62103e35887e537a', 'employee', '2023-09-12');
 
 --
 -- Indexes for dumped tables
@@ -96,13 +100,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
