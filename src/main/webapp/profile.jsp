@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,67 +46,7 @@
     <div class="dashboard_grid_container">
         <div class="dash_grid_items">
             <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
-                <div class="col-xl-12 flex navtab">
-                    <div class="title">
-                        <h5>Phar<span>macy</span></h5>
-                    </div>
-                </div>
-                <div class="col-xl-12">
-                    <ul class="menu">
-                        <li>
-                            <a href="dashboard.jsp" class="dropdown">
-                                <i class="bi bi-buildings-fill"></i>
-                                <span> Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nested_list">
-                            <a class="dropdown">
-                                <i class="bi bi-collection-fill"></i>
-                                <span>Store <i class="bi bi-arrow-right-circle-fill drop"></i></span>
-                            </a>
-                            <ul class="list_dropdown">
-                                <li><a href="store.html"><i class="bi bi-chevron-double-right"></i> In Store</a></li>
-                                <li><a href="newItem.html"><i class="bi bi-chevron-double-right"></i> New Item</a></li>
-                            </ul>
-                        </li>
-                        <li class="nested_list">
-                            <a class="dropdown">
-                                <i class="bi bi-people-fill"></i>
-                                <span>Employees <i class="bi bi-arrow-right-circle-fill drop"></i></span>
-                            </a>
-                            <ul class="list_dropdown">
-                                <li><a href="allEmployee.html"><i class="bi bi-chevron-double-right"></i> All Employees</a></li>
-                                <li><a href="newEmployee.html"><i class="bi bi-chevron-double-right"></i> Add Employee</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="profile.html" class="dropdown">
-                                <i class="bi bi-person-fill"></i>
-                                <span> Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="sales.html" class="dropdown">
-                                <i class="bi bi-box-seam-fill"></i>
-                                <span> Sales</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="reports.html" class="dropdown">
-                                <i class="bi bi-body-text"></i>
-                                <span> Reports</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="logout.jsp" class="dropdown">
-                                <i class="bi bi-shield-fill"></i>
-                                <span> Log Out</span>
-                            </a>
-                        </li>
-                        <!-- <li><a href=""></a></li> -->
-                    </ul>
-                </div>
+                <%@include file="sidebar.html" %>
             </div>
         </div>
         <div class="dash_grid_items">
