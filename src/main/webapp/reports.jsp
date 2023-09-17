@@ -102,12 +102,6 @@
                                 <h5><span>Date Added</span></h5>
                             </div>
                         </div>
-<!--                        <div class=" grid-item " style=" background-color: var(--shadow);padding-left: 10px;padding-right:
-                    10px; ">
-                            <div class=" title ">
-                                <h5><span>Actions</span></h5>
-                            </div>
-                        </div>-->
 
 
 
@@ -180,14 +174,7 @@
                                                             <%= date_sold %>
                                                         </span></h5>
                                                 </div>
-                                            </div>
-<!--                                                        <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
-                                                <div class="title ">
-                                                    <h5><span>
-                                                            Action
-                                                        </span></h5>
-                                                </div>
-                                            </div>-->
+                                            </div>                                                    
                                            
 
                                                             <%
@@ -202,72 +189,9 @@
                 
             </div>
 
-            <div class="update_box" style="display: none;">
-                <div class="update" style="padding: 2px;">
-                    <div class="cancel">
-                        <button><i class="bi bi-x-lg"></i></button>
-                    </div>
-                    <div class="container">
-                        <input type="text" placeholder="Product Name" name="ProductName"
-                            style="margin-top: 5px;margin-bottom: 5px;">
-                        <div class=""></div>
-                        <input type="text" placeholder="Brand Name" name="BrandName"
-                            style="margin-top: 5px;margin-bottom: 5px;">
-                        <div class=""></div>
-                        <input type="text" placeholder="Product Quantity" name="Quantity"
-                            style="margin-top: 5px;margin-bottom: 5px;">
-                        <div class=""></div>
-                        <input type="text" placeholder="Item Unit " name="Unit"
-                            style="margin-top: 5px;margin-bottom: 5px;">
-                        <div class=""></div>
-                        <input type="text" placeholder="Valid Until " name="expire"
-                            style="margin-top: 5px;margin-bottom: 5px;">
-                        <div class=""></div>
-                        <input type="text" placeholder="Selling Price " name="selling"
-                            style="margin-top: 5px;margin-bottom: 5px;">
-                        <div class=""></div>
-                        <input type="text" placeholder="Buying Price " name="buying"
-                            style="margin-top: 5px;margin-bottom: 5px;">
-                        <div class=""></div>
 
-                        <div class="button">
-                            <button id="bottonGet">Complete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Selling -->
-            <div class="selling_box" style="display: none;">
-                <div class="selling">
-                    <div class="cancel">
-                        <button><i class="bi bi-x-lg"></i></button>
-                    </div>
-                    <div class="title" style="
-margin-top: 20px;
-">
-                        <h4 style="font-weight: 100;">Selling Product</h4>
-                    </div>
-                    <div class="container">
-                        <input type="text" placeholder="Product Name" name="ProductName">
-                        <div class=""></div>
-                        <input type="text" placeholder="Brand Name" name="BrandName">
-                        <div class=""></div>
-                        <input type="text" placeholder="Product Quantity" name="Quantity">
-                        <div class=""></div>
-                        <input type="text" placeholder="Item Unit " name="Unit">
-                        <div class=""></div>
-                        <input type="text" placeholder="Selling Price " name="selling">
-                        <div class=""></div>
-                        <input type="text" placeholder="Buying Price " name="buying">
-                        <div class=""></div>
-
-                        <div class="button">
-                            <button id="bottonGet">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  
         </div>
         <script src="https://code.jquery.com/jquery-3.7.0.min.js "></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js "

@@ -3,6 +3,10 @@
     <%@ include file="Dbconnection.jsp" %>
         <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate" ); %>
             <% response.setHeader("Pragma", "no-cache" ); %>
+            <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+
+            
 
                 <!DOCTYPE html>
                 <html lang="en">
@@ -114,7 +118,7 @@
                                         <div class="grid-item "
                                             style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
                                             <div class="title ">
-                                                <h5><span>Valid Until</span></h5>
+                                                <h5><span>Days Remaining</span></h5>
                                             </div>
                                         </div>
 
@@ -154,7 +158,20 @@
                                            preparedStatement.setInt(1, user_id); 
                                            ResultSet userResult = preparedStatement.executeQuery(); if (userResult.next()) {
                                            user_name = userResult.getString("firstname") + " " +
-                                           userResult.getString("lastname"); } %>
+                                           userResult.getString("lastname"); } 
+                                            
+                                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date expireDate = dateFormat.parse(expire);
+    Date registeredDate = dateFormat.parse(registered_date);
+
+    // Calculate days remaining
+    long currentTime = System.currentTimeMillis();
+    long expireTime = expireDate.getTime();
+    long registeredTime = registeredDate.getTime();
+    long daysRemaining = (expireTime - currentTime) / (24 * 60 * 60 * 1000); // Milliseconds to days
+
+   
+                                        %>
 
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                                                 <div class="title ">
@@ -210,7 +227,7 @@
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                                                 <div class="title ">
                                                     <h5><span>
-                                                            <%= expire.substring(0,10) %>
+                                                            <%= daysRemaining %>
                                                         </span></h5>
                                                 </div>
                                             </div>
