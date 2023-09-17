@@ -31,6 +31,7 @@
     int rowCount = 0;
     int  userCount = 0;
     int salesCount = 0;
+    int totalSales = 0;
          
            try {
         connection1 = (Connection) application.getAttribute("dbConnection");
@@ -56,6 +57,13 @@
 
             if (resultSet1.next()) {
                 salesCount = resultSet1.getInt(1); // Get the count from the first column
+            }
+            
+      String totalSalesQuery = "SELECT SUM(price_sold) AS total_sales FROM sales";
+            resultSet1 = statement1.executeQuery(totalSalesQuery);
+
+            if (resultSet1.next()) {
+                totalSales = resultSet1.getInt(1); // Get the count from the first column
             }
             
            
@@ -121,11 +129,11 @@
         <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000"
             data-aos-delay="3000">
             <div class="title text-center mt-2">
-                <h5><span>EXPIRED</span></h5>
+                <h5><span>TOTAL SALES</span></h5>
             </div>
             <div class="number">
                 <div class="title text-center mt-2">
-                    <h1><span>95%</span></h1>
+                    <h1><span> <%= totalSales %> </span></h1>
                 </div>
             </div>
         </div>
