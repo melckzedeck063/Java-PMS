@@ -20,40 +20,50 @@
         response.sendRedirect("login.jsp");
      }
      else {
-     String username = (String)  session.getAttribute("username");
-    String fname = (String) session.getAttribute("fname");
-    String lname = (String)  session.getAttribute("lname");
-        if(username != null && !username.isEmpty()){
+     String user_username = (String)  session.getAttribute("username");
+     String user_firstname = (String) session.getAttribute("fname");
+     String user_lastname = (String)  session.getAttribute("lname");
+        if(user_username != null && !user_username.isEmpty()){
         
-         Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
+              Connection connection1 = null;
+    Statement statement1 = null;
+    ResultSet resultSet1 = null;
     int rowCount = 0;
     int  userCount = 0;
+    int salesCount = 0;
          
            try {
-        connection = (Connection) application.getAttribute("dbConnection");
+        connection1 = (Connection) application.getAttribute("dbConnection");
 
-        if (connection != null) {
-            statement = connection.createStatement();
+        if (connection1 != null) {
+            statement1 = connection1.createStatement();
             String countQuery = "SELECT COUNT(*) FROM products"; // Replace 'your_table' with your actual table name
-            resultSet = statement.executeQuery(countQuery);
+            resultSet1 = statement1.executeQuery(countQuery);
 
-            if (resultSet.next()) {
-                rowCount = resultSet.getInt(1); // Get the count from the first column
+            if (resultSet1.next()) {
+                rowCount = resultSet1.getInt(1); // Get the count from the first column
             }
             
            String countUsers = "SELECT COUNT(*) FROM users"; // Replace 'your_table' with your actual table name
-            resultSet = statement.executeQuery(countUsers);
+            resultSet1 = statement1.executeQuery(countUsers);
 
-            if (resultSet.next()) {
-                userCount = resultSet.getInt(1); // Get the count from the first column
+            if (resultSet1.next()) {
+                userCount = resultSet1.getInt(1); // Get the count from the first column
+            }
+            
+       String countSales = "SELECT COUNT(*) FROM sales"; // Replace 'your_table' with your actual table name
+            resultSet1 = statement1.executeQuery(countSales);
+
+            if (resultSet1.next()) {
+                salesCount = resultSet1.getInt(1); // Get the count from the first column
             }
             
            
         
     
-    %>
+    %>            
+           
+       
 
 <body>
     <div class="box_full" style="--width:100%">
@@ -71,7 +81,7 @@
                     </div>
                     <div class="grid mt-20">
                         <span class="white">
-                            <%= fname + " " + lname %>
+                            <%= user_firstname + " " + user_lastname %>
                         </span>
                         <div class="up">
                             <span class="gray small italic">Administrator</span>
@@ -122,11 +132,11 @@
         <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000"
             data-aos-delay="3000">
             <div class="title text-center mt-2">
-                <h5><span>SOLD</span></h5>
+                <h5><span>ITEMS SOLD</span></h5>
             </div>
             <div class="number">
                 <div class="title text-center mt-2">
-                    <h1><span>550</span></h1>
+                    <h1><span> <%= salesCount %> </span></h1>
                 </div>
             </div>
         </div>

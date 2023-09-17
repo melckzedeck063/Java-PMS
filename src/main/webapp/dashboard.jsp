@@ -83,35 +83,7 @@
     String lname = (String)  session.getAttribute("lname");
         if(username != null && !username.isEmpty()){
         
-         Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
-    int rowCount = 0;
-    int  userCount = 0;
-         
-           try {
-        connection = (Connection) application.getAttribute("dbConnection");
-
-        if (connection != null) {
-            statement = connection.createStatement();
-            String countQuery = "SELECT COUNT(*) FROM products"; // Replace 'your_table' with your actual table name
-            resultSet = statement.executeQuery(countQuery);
-
-            if (resultSet.next()) {
-                rowCount = resultSet.getInt(1); // Get the count from the first column
-            }
-            
-           String countUsers = "SELECT COUNT(*) FROM users"; // Replace 'your_table' with your actual table name
-            resultSet = statement.executeQuery(countUsers);
-
-            if (resultSet.next()) {
-                userCount = resultSet.getInt(1); // Get the count from the first column
-            }
-            
-           
-        
-    
-    %>
+   %>
 
 <body>
     <div class="pre_loader">
@@ -230,7 +202,7 @@
             packages: ["corechart"]
         });
         google.charts.setOnLoadCallback(drawChart);
-        var total
+        var total;
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
@@ -243,7 +215,7 @@
 
             var options = {
                 title: 'GENERAL ACTIVITIES',
-                pieHole: 0.3,
+                pieHole: 0.3
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -252,11 +224,7 @@
     </script>
 </body>
 <%
-    
-    }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
+   
     
     }
   else {

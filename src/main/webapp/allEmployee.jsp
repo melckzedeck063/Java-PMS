@@ -172,8 +172,8 @@
                         border-radius: 10px;"></i>
                                                     <i class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);padding: 8px;margin: 3px;
                         border-radius: 10px;"></i>
-                                                    <i class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
-                        border-radius: 10px;"></i>
+<!--                                                    <i class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
+                        border-radius: 10px;"></i>-->
                                                 </div>
                                             </div>
 

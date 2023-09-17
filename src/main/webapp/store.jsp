@@ -1,4 +1,5 @@
-<%@page import="java.sql.*" %>
+
+<%@page import="java.sql.*"%>
     <%@ include file="Dbconnection.jsp" %>
         <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate" ); %>
             <% response.setHeader("Pragma", "no-cache" ); %>
@@ -63,10 +64,10 @@
                                 </div>
                             </div>
                             <div class="dash_grid_items">
-                                <%@include file="topbar.html" %>
+                                <%@include file="topbar.jsp" %>
                                 <div class=" container ">
                                     <div class="common-grid "
-                                        style="--grid-template:auto auto auto auto auto auto auto auto auto auto"
+                                        style="--grid-template:auto auto auto auto auto auto auto auto auto 150px"
                                         data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                                         <div class="grid-item "
                                             style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
@@ -132,24 +133,28 @@
 
 
                                         <% String select_query="SELECT * FROM products" ; Statement
-                                            statement=connection.createStatement() ;
-                                            resultSet=statement.executeQuery(select_query); while(resultSet.next()){ int
-                                            product_id=resultSet.getInt("product_id"); String
-                                            product=resultSet.getString("product_name"); String
-                                            brand=resultSet.getString("brand_name"); int
-                                            quantity=resultSet.getInt("quantity"); int
-                                            buying=resultSet.getInt("buying_price"); int
-                                            selling=resultSet.getInt("selling_price"); String
-                                            unit=resultSet.getString("unit"); String
-                                            expire=resultSet.getString("date_expired"); String
-                                            registered_date=resultSet.getString("date_registered"); int
-                                            user_id=resultSet.getInt("registered_by"); String user_name=null; String
-                                            selectUserQuery="SELECT firstname, lastname FROM users WHERE id=?" ;
-                                            preparedStatement=connection.prepareStatement(selectUserQuery);
-                                            preparedStatement.setInt(1, user_id); ResultSet
-                                            userResult=preparedStatement.executeQuery(); if (userResult.next()) {
-                                            user_name=userResult.getString("firstname") + " " +
-                                            userResult.getString("lastname"); } %>
+                                            statement = connection.createStatement() ;
+                                            resultSet = statement.executeQuery(select_query); 
+                                           while(resultSet.next()){ 
+                                           int product_id = resultSet.getInt("product_id"); 
+                                            String product = resultSet.getString("product_name"); 
+                                           String brand = resultSet.getString("brand_name"); 
+                                           int quantity = resultSet.getInt("quantity"); 
+                                           int buying = resultSet.getInt("buying_price"); 
+                                           int selling = resultSet.getInt("selling_price"); 
+                                           String unit = resultSet.getString("unit"); 
+                                           String expire = resultSet.getString("date_expired"); 
+                                           String registered_date = resultSet.getString("date_registered"); 
+                                           int user_id = resultSet.getInt("registered_by"); 
+                                           String user_name=null; String
+
+                                           selectUserQuery = "SELECT firstname, lastname FROM users WHERE id=?" ;
+
+                                           preparedStatement = connection.prepareStatement(selectUserQuery);
+                                           preparedStatement.setInt(1, user_id); 
+                                           ResultSet userResult = preparedStatement.executeQuery(); if (userResult.next()) {
+                                           user_name = userResult.getString("firstname") + " " +
+                                           userResult.getString("lastname"); } %>
 
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                                                 <div class="title ">
@@ -218,13 +223,34 @@
                                             </div>
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                                                 <div class="title ">
-                                                    <div class="title">
-                                                        <i class="bi bi-trash3-fill" style="color:red;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
-border-radius: 10px;"></i>
-                                                        <i class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);padding: 8px;margin: 3px;
-border-radius: 10px;"></i>
-                                                        <i class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
-border-radius: 10px;"></i>
+                                                    <div class="title" style="display:flex;column-gap: 10px !important;">
+                                                        <form style="display:flex;column-gap: 10px !important;">
+                                                            
+                                                        
+                                          <i class="bi bi-trash3-fill" style="color:red;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px; border-radius: 10px;"></i>   </form>
+                                          <form action="edit_product.jsp" method="POST" style="display:flex;column-gap: 10px !important;">
+                                              <input type="hidden" name="product_id"  value="<%= product_id %>">
+                    <input type="hidden" name="product"  value="<%= product %>">
+                    <input type="hidden" name="brand"  value="<%= brand %>">
+                    <input type="hidden" name="quantity"  value="<%= quantity %>">
+                    <input type="hidden" name="selling"  value="<%= selling %>">
+                    <input type="hidden" name="buying"  value="<%= buying %>">
+                    <input type="hidden" name="date"  value="<%= expire.substring(0,10) %>">
+                    <input type="hidden" name="unit"  value="<%= unit %>">
+                                                        <button class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);color:var(--green);background:none;padding: 8px;margin: 3px;
+border-radius: 10px;"></button>
+    </form>                             <form action="sale_product.jsp" method="POST" style="display:flex;column-gap: 10px !important;">
+                                              <input type="hidden" name="product_id"  value="<%= product_id %>">
+                    <input type="hidden" name="product"  value="<%= product %>">
+                    <input type="hidden" name="brand"  value="<%= brand %>">
+                    <input type="hidden" name="quantity"  value="<%= quantity %>">
+                    <input type="hidden" name="selling"  value="<%= selling %>">
+                    <input type="hidden" name="buying"  value="<%= buying %>">
+                    <input type="hidden" name="date"  value="<%= expire.substring(0,10) %>">
+                    <input type="hidden" name="unit"  value="<%= unit %>">
+                                                        <button class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);background:none;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
+border-radius: 10px;"></button>
+    </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -236,40 +262,7 @@ border-radius: 10px;"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="update_box" style="display: none;">
-                                <div class="update" style="padding: 2px;">
-                                    <div class="cancel">
-                                        <button><i class="bi bi-x-lg"></i></button>
-                                    </div>
-                                    <div class="container">
-                                        <input type="text" placeholder="Product Name" name="ProductName"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Brand Name" name="BrandName"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Product Quantity" name="Quantity"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Item Unit " name="Unit"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Valid Until " name="expire"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Selling Price " name="selling"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Buying Price " name="buying"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-
-                                        <div class="button">
-                                            <button id="bottonGet">Complete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <!-- Selling -->
                             <div class="selling_box" style="display: none;">
@@ -319,25 +312,25 @@ margin-top: 20px;
                                     easing: 'linear'
                                 });
                             }, 2000);
-                            jQuery(".update .cancel button").on("click", () => {
-                                jQuery(".update_box").fadeOut({
-                                    duration: 500,
-                                    easing: 'linear',
-                                    done: function () {
-                                        console.log("UPDATE CANCELED!");
-                                    }
-                                })
-                            });
-                            jQuery(".update_open").on("click", () => {
-                                jQuery(".update_box").addClass("animate__animated animate_fadeInUp");
-                                jQuery(".update_box").fadeIn({
-                                    duration: 500,
-                                    easing: 'linear',
-                                    done: function () {
-                                        console.log("UPDATE CANCELED!");
-                                    }
-                                });
-                            });
+//                            jQuery(".update .cancel button").on("click", () => {
+//                                jQuery(".update_box").fadeOut({
+//                                    duration: 500,
+//                                    easing: 'linear',
+//                                    done: function () {
+//                                        console.log("UPDATE CANCELED!");
+//                                    }
+//                                })
+//                            });
+//                            jQuery(".update_open").on("click", () => {
+//                                jQuery(".update_box").addClass("animate__animated animate_fadeInUp");
+//                                jQuery(".update_box").fadeIn({
+//                                    duration: 500,
+//                                    easing: 'linear',
+//                                    done: function () {
+//                                        console.log("UPDATE CANCELED!");
+//                                    }
+//                                });
+//                            });
 
                             jQuery(".selling .cancel button").on("click", () => {
                                 jQuery(".selling_box").fadeOut({
@@ -348,16 +341,16 @@ margin-top: 20px;
                                     }
                                 })
                             });
-                            jQuery(".selling_open").on("click", () => {
-                                jQuery(".selling_box").addClass("animate__animated animate_fadeInUp");
-                                jQuery(".selling_box").fadeIn({
-                                    duration: 500,
-                                    easing: 'linear',
-                                    done: function () {
-                                        console.log("SELL CANCELED!");
-                                    }
-                                });
-                            });
+//                            jQuery(".selling_open").on("click", () => {
+//                                jQuery(".selling_box").addClass("animate__animated animate_fadeInUp");
+//                                jQuery(".selling_box").fadeIn({
+//                                    duration: 500,
+//                                    easing: 'linear',
+//                                    done: function () {
+//                                        console.log("SELL CANCELED!");
+//                                    }
+//                                });
+//                            });
                         </script>
                     </body>
 
