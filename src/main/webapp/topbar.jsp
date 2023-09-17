@@ -76,12 +76,12 @@
     <div class="box_full" style="--width:100%">
         <div class="container">
             <div class="row" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="3000">
-                <div class="col-10 flex">
-                    <div class="input Search">
+                <div class="col-9 flex">
+                    <!-- <div class="input Search">
                         <input type="text" placeholder="Search Package Name">
-                    </div>
+                    </div> -->
                 </div>
-                <div class="col-2 flex">
+                <div class="col-3 flex">
                     <div class="profile">
                         <img src="https://th.bing.com/th/id/OIP.X0Bqsl6JQsvg2mSFr9JrcQHaHa?pid=ImgDet&rs=1" alt=""
                             srcset="">
