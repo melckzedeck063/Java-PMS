@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 13, 2023 at 09:29 AM
+-- Generation Time: Sep 17, 2023 at 01:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -45,10 +45,37 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `brand_name`, `buying_price`, `selling_price`, `quantity`, `unit`, `date_expired`, `date_registered`, `registered_by`) VALUES
-(1, 'Panadol', 'Sheladol', 70, 100, 20, 'pills', '2023-09-13 07:11:56', '2023-09-11', 1),
-(2, 'Septrin', 'Sheladol', 65, 100, 15, 'pills', '2023-09-13 07:12:09', '2023-09-11', 1),
-(3, 'Diclofenac Gel', 'Sheladol', 3000, 4500, 5, 'Gel', '2023-09-13 07:12:29', '2023-09-11', 1),
-(4, 'Sedton syrup', 'Sedton', 3000, 4000, 10, 'solution', '2025-01-15 21:00:00', '2023-09-13', 1);
+(1, 'Panadol', 'Sheladol', 70, 100, 50, 'pills', '2023-09-14 08:51:02', '2023-09-11', 1),
+(2, 'Septrin', 'Sheladol', 65, 100, 30, 'pills', '2023-09-17 10:40:11', '2023-09-11', 1),
+(3, 'Diclofenac Gel', 'Sheladol', 3000, 5000, 7, 'Gel', '2023-09-14 08:52:16', '2023-09-11', 1),
+(4, 'Sedton syrup', 'Sedton', 3000, 4000, 9, 'solution', '2023-09-17 10:38:27', '2023-09-13', 1),
+(5, 'Gofen', 'diclofenac', 700, 1000, 16, 'pills', '2023-09-17 11:02:46', '2023-09-17', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales`
+--
+
+CREATE TABLE `sales` (
+  `sale_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(70) NOT NULL,
+  `brand_name` varchar(70) NOT NULL,
+  `price_sold` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `sold_by` int(11) NOT NULL,
+  `date_sold` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`sale_id`, `product_id`, `product_name`, `brand_name`, `price_sold`, `quantity`, `sold_by`, `date_sold`) VALUES
+(2, 4, 'Sedton syrup', 'Sedton', 4500, 1, 1, '2023-09-17 13:38:27'),
+(3, 2, 'Septrin', 'Sheladol', 100, 5, 1, '2023-09-17 13:39:49'),
+(4, 5, 'Gofen', 'diclofenac', 1000, 4, 1, '2023-09-17 14:02:46');
 
 -- --------------------------------------------------------
 
@@ -87,6 +114,12 @@ ALTER TABLE `products`
   ADD KEY `registered_by` (`registered_by`);
 
 --
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`sale_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -100,7 +133,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
