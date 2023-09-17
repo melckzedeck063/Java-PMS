@@ -69,15 +69,15 @@
                                     width: 100px;
                                     transform: translate(-50%, -50%);
                                 }
-
-                               
                             </style>
                             </head>
 
-                            <% session=request.getSession(false); if(session==null){ response.sendRedirect("login.jsp");
-                                } else { String username=(String) session.getAttribute("username"); String
-                                fname=(String) session.getAttribute("fname"); String lname=(String)
-                                session.getAttribute("lname"); if(username !=null && !username.isEmpty()){ %>
+                            <% session=request.getSession(false); if(session==null){ response.sendRedirect("login.jsp"); } else {
+                    String username=(String) session.getAttribute("username"); String fname=(String)
+                    session.getAttribute("fname"); String lname=(String) session.getAttribute("lname"); int
+                    user=(Integer) session.getAttribute("user_id"); if(username !=null && !username.isEmpty()){
+                    Connection connection=null; PreparedStatement preparedStatement=null; ResultSet resultSet=null; try{
+                    connection=(Connection) application.getAttribute("dbConnection"); if(connection !=null){ %>
 
                                 <body>
                                     <div class="pre_loader">
@@ -108,86 +108,45 @@
 
                                                                 <div class="row"
                                                                     style="margin: 10px;justify-content: center;">
-                                                                    <div class="col-sm-3 flex"
-                                                                        style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;"
-                                                                        data-aos="fade-up" data-aos-duration="1000"
-                                                                        data-aos-delay="3000">
-                                                                        <div class="profile">
-                                                                            <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png"
-                                                                                alt="" srcset="">
-                                                                        </div>
+                                                                    <% String select_query="SELECT * FROM users" ;
+                                                                        Statement statement=connection.createStatement()
+                                                                        ;
+                                                                        resultSet=statement.executeQuery(select_query);
+                                                                        while(resultSet.next()){ int
+                                                                        user_id=resultSet.getInt("id"); String
+                                                                        firstname=resultSet.getString("firstname");
+                                                                        String lastname=resultSet.getString("lastname");
+                                                                        String email=resultSet.getString("email");
+                                                                        String phone=resultSet.getString("phone");
+                                                                        String role=resultSet.getString("role"); String
+                                                                        registered_date=resultSet.getString("date_registered");
+                                                                        %>
 
-                                                                        <div class="p-10"
-                                                                            style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
-                                                                            <span class="">John Doe</span>
-                                                                            <div style="margin-top: -7px;">
-                                                                                <span
-                                                                                    class="gray small">Administrator</span>
+                                                                        <div class="col-sm-4 flex"
+                                                                            style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;"
+                                                                            data-aos="fade-up" data-aos-duration="1000"
+                                                                            data-aos-delay="3000">
+                                                                            <div class="profile">
+                                                                                <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png"
+                                                                                    alt="" srcset="">
+                                                                            </div>
+
+                                                                            <div class="p-10"
+                                                                                style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
+                                                                                <span class="" style="font-size:small;font-weight:100;text-transform: uppercase;"><%= firstname +" " + lastname %></span>
+                                                                                <div style="margin-top: -7px;">
+                                                                                    <span style="color:rgb(102, 102, 102);"
+                                                                                        class="gray small">Employee</span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="col-sm-3 flex"
-                                                                        style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;"
-                                                                        data-aos="fade-up" data-aos-duration="1000"
-                                                                        data-aos-delay="3000">
-                                                                        <div class="profile">
-                                                                            <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png"
-                                                                                alt="" srcset="">
-                                                                        </div>
-
-                                                                        <div class="p-10"
-                                                                            style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
-                                                                            <span class="">John Doe</span>
-                                                                            <div style="margin-top: -7px;">
-                                                                                <span
-                                                                                    class="gray small">Administrator</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-3 flex"
-                                                                        style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;"
-                                                                        data-aos="fade-up" data-aos-duration="1000"
-                                                                        data-aos-delay="3000">
-                                                                        <div class="profile">
-                                                                            <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png"
-                                                                                alt="" srcset="">
-                                                                        </div>
-
-                                                                        <div class="p-10"
-                                                                            style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
-                                                                            <span class="">John Doe</span>
-                                                                            <div style="margin-top: -7px;">
-                                                                                <span
-                                                                                    class="gray small">Administrator</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-3 flex"
-                                                                        style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);margin: 4px;padding: 8px;border-radius: 10px;"
-                                                                        data-aos="fade-up" data-aos-duration="1000"
-                                                                        data-aos-delay="3000">
-                                                                        <div class="profile">
-                                                                            <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png"
-                                                                                alt="" srcset="">
-                                                                        </div>
-
-                                                                        <div class="p-10"
-                                                                            style="margin-top: 10px;padding-bottom: -10px !important;position: relative;">
-                                                                            <span class="">John Doe</span>
-                                                                            <div style="margin-top: -7px;">
-                                                                                <span
-                                                                                    class="gray small">Administrator</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-
+                                                                        <% } %>
                                                                 </div>
                                                                 <div class="more text-center"
                                                                     style="margin:10px;margin-top: -10px;"
                                                                     data-aos="fade-right" data-aos-duration="1000"
                                                                     data-aos-delay="3000">
-                                                                    <a href="allEmployee.html" class="small">View
+                                                                    <a href="allEmployee.jsp" class="small" style="color: var(--orange);">View
                                                                         All</a>
                                                                 </div>
                                                             </div>
@@ -255,7 +214,14 @@
                                         }
                                     </script>
                                 </body>
-                                <% } else { response.sendRedirect("login.jsp"); } } %>
+                                <% } } catch(Exception e){ out.println("<p> Error : " + e.getMessage() + " </p>");
+                        }
+                        }
+                        else {
+                        response.sendRedirect("login.jsp");
+                        }
+                        }
 
 
+                        %>
                             </html>
