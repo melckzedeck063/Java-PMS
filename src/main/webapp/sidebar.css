@@ -1,6 +1,8 @@
 
 .navtab{
-    border-bottom: 1px solid var(--green);
+    border-bottom: 1px solid var(--milk);
+    margin-left: -5px;
+    text-align: center;
     border-radius: 0px !important;
 }
 .navtab .title h5,.navtab .title span{
@@ -11,5 +13,36 @@
     text-transform: uppercase;
 }
 .navtab .title h5{
-    color: var(--green);
+    color: var(--black);
+    position: relative;
+   margin-left: 20px;
+    text-align: center;
+}
+.navtab .title h5 span{
+    color: rgb(189, 58, 58);
+}
+/* .sidebar{
+    background-color: black;
+    color: white !important;
+} */
+.menu  li:nth-child(1){
+    text-align: center;
+    border-radius: 10px;
+    padding: 8px;
+    margin-left: -30px;
+    background-color: var(--green);
+}
+.menu  .nested_list,.menu  .nested_list:hover{
+    text-align: start;
+    border-radius: 10px;
+    padding: 0px;
+    margin-left: -30px;
+    background: none;
+}
+.menu  .nested_list li:nth-child(1),  .menu  .nested_list li:nth-child(1):hover{
+    text-align: start;
+    border-radius: 10px;
+    padding: 0px;
+    margin-left: -20px;
+    background: none;
 }
