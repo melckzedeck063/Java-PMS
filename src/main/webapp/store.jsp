@@ -239,9 +239,18 @@
                     <input type="hidden" name="unit"  value="<%= unit %>">
                                                         <button class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);padding: 8px;margin: 3px;
 border-radius: 10px;"></button>
+    </form>                             <form action="sale_product.jsp" method="POST">
+                                              <input type="hidden" name="product_id"  value="<%= product_id %>">
+                    <input type="hidden" name="product"  value="<%= product %>">
+                    <input type="hidden" name="brand"  value="<%= brand %>">
+                    <input type="hidden" name="quantity"  value="<%= quantity %>">
+                    <input type="hidden" name="selling"  value="<%= selling %>">
+                    <input type="hidden" name="buying"  value="<%= buying %>">
+                    <input type="hidden" name="date"  value="<%= expire.substring(0,10) %>">
+                    <input type="hidden" name="unit"  value="<%= unit %>">
+                                                        <button class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
+border-radius: 10px;"></button>
     </form>
-                                                        <i class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
-border-radius: 10px;"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -332,16 +341,16 @@ margin-top: 20px;
                                     }
                                 })
                             });
-                            jQuery(".selling_open").on("click", () => {
-                                jQuery(".selling_box").addClass("animate__animated animate_fadeInUp");
-                                jQuery(".selling_box").fadeIn({
-                                    duration: 500,
-                                    easing: 'linear',
-                                    done: function () {
-                                        console.log("SELL CANCELED!");
-                                    }
-                                });
-                            });
+//                            jQuery(".selling_open").on("click", () => {
+//                                jQuery(".selling_box").addClass("animate__animated animate_fadeInUp");
+//                                jQuery(".selling_box").fadeIn({
+//                                    duration: 500,
+//                                    easing: 'linear',
+//                                    done: function () {
+//                                        console.log("SELL CANCELED!");
+//                                    }
+//                                });
+//                            });
                         </script>
                     </body>
 

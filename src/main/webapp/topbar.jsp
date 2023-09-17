@@ -30,6 +30,7 @@
     ResultSet resultSet1 = null;
     int rowCount = 0;
     int  userCount = 0;
+    int salesCount = 0;
          
            try {
         connection1 = (Connection) application.getAttribute("dbConnection");
@@ -48,6 +49,13 @@
 
             if (resultSet1.next()) {
                 userCount = resultSet1.getInt(1); // Get the count from the first column
+            }
+            
+       String countSales = "SELECT COUNT(*) FROM sales"; // Replace 'your_table' with your actual table name
+            resultSet1 = statement1.executeQuery(countSales);
+
+            if (resultSet1.next()) {
+                salesCount = resultSet1.getInt(1); // Get the count from the first column
             }
             
            
@@ -124,11 +132,11 @@
         <div class="box_full_template_grid " style="--width:100%;--h:150px;" data-aos="flip-up" data-aos-duration="1000"
             data-aos-delay="3000">
             <div class="title text-center mt-2">
-                <h5><span>SOLD</span></h5>
+                <h5><span>ITEMS SOLD</span></h5>
             </div>
             <div class="number">
                 <div class="title text-center mt-2">
-                    <h1><span>550</span></h1>
+                    <h1><span> <%= salesCount %> </span></h1>
                 </div>
             </div>
         </div>
