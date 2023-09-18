@@ -167,13 +167,24 @@
                                                 </div>
                                             </div>
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
-                                                <div class="title">
-                                                    <i class="bi bi-trash3-fill" style="color:red;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
-                        border-radius: 10px;"></i>
-                                                    <i class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);padding: 8px;margin: 3px;
-                        border-radius: 10px;"></i>
-                                                    <i class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
-                        border-radius: 10px;"></i>
+                                                <div class="title flex">
+                                                    </form>
+                                          <form action="edit_user.jsp" method="POST" style="display:flex;column-gap: 10px !important;">
+                                              <input type="hidden" name="user_id"  value="<%= user_id %>">
+                    <input type="hidden" name="firstname"  value="<%= firstname %>">
+                    <input type="hidden" name="lastname"  value="<%= lastname %>">
+                    <input type="hidden" name="email"  value="<%= email %>">
+                    <input type="hidden" name="phone"  value="<%= phone %>">
+                    <input type="hidden" name="role"  value="<%= role %>">
+
+                                                        <button class="bi bi-pen update_open" style="color:green;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);color:var(--green);background:none;padding: 8px;margin: 3px;
+border-radius: 10px;"></button>
+
+                                          
+<!--                                                    <i class="bi bi-trash3-fill" style="color:red;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);padding: 8px;margin: 3px;
+                        border-radius: 10px;"></i>-->
+<!--                                                    <i class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
+                        border-radius: 10px;"></i>-->
                                                 </div>
                                             </div>
 
@@ -188,72 +199,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="update_box" style="display: none;">
-                                <div class="update" style="padding: 2px;">
-                                    <div class="cancel">
-                                        <button><i class="bi bi-x-lg"></i></button>
-                                    </div>
-                                    <div class="container">
-                                        <input type="text" placeholder="Product Name" name="ProductName"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Brand Name" name="BrandName"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Product Quantity" name="Quantity"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Item Unit " name="Unit"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Valid Until " name="expire"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Selling Price " name="selling"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Buying Price " name="buying"
-                                            style="margin-top: 5px;margin-bottom: 5px;">
-                                        <div class=""></div>
-
-                                        <div class="button">
-                                            <button id="bottonGet">Complete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <!-- Selling -->
-                            <div class="selling_box" style="display: none;">
-                                <div class="selling">
-                                    <div class="cancel">
-                                        <button><i class="bi bi-x-lg"></i></button>
-                                    </div>
-                                    <div class="title" style="
-                margin-top: 20px;
-                ">
-                                        <h4 style="font-weight: 100;">Selling Product</h4>
-                                    </div>
-                                    <div class="container">
-                                        <input type="text" placeholder="Product Name" name="ProductName">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Brand Name" name="BrandName">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Product Quantity" name="Quantity">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Item Unit " name="Unit">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Selling Price " name="selling">
-                                        <div class=""></div>
-                                        <input type="text" placeholder="Buying Price " name="buying">
-                                        <div class=""></div>
 
-                                        <div class="button">
-                                            <button id="bottonGet">Confirm</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <script src="https://code.jquery.com/jquery-3.7.0.min.js "></script>
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js "

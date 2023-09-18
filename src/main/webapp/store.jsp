@@ -1,4 +1,3 @@
-
 <%@page import="java.sql.*"%>
     <%@ include file="Dbconnection.jsp" %>
         <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate" ); %>
@@ -71,7 +70,7 @@
                                 <%@include file="topbar.jsp" %>
                                 <div class=" container ">
                                     <div class="common-grid "
-                                        style="--grid-template:auto auto auto auto auto auto auto auto auto auto"
+                                        style="--grid-template:auto auto auto auto auto auto auto auto auto 150px"
                                         data-aos="fade-right" data-aos-duration="1000" data-aos-delay="3000">
                                         <div class="grid-item "
                                             style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
@@ -118,7 +117,7 @@
                                         <div class="grid-item "
                                             style="background-color: var(--shadow);padding-left: 10px;padding-right: 10px; ">
                                             <div class="title ">
-                                                <h5><span>Days Remaining</span></h5>
+                                                <h5><span class="rems">Day remainings</span></h5>
                                             </div>
                                         </div>
 
@@ -240,12 +239,12 @@
                                             </div>
                                             <div class="grid-item h " style="padding-left: 10px;padding-right: 10px; ">
                                                 <div class="title ">
-                                                    <div class="title">
-                                                        <form>
+                                                    <div class="title" style="display:flex;column-gap: 10px !important;">
+                                                        <form style="display:flex;column-gap: 10px !important;">
                                                             
                                                         
-                                          <i class="bi bi-trash3-fill" style="color:red;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px; border-radius: 10px;"></i>   </form>
-                                          <form action="edit_product.jsp" method="POST">
+                                          <!--<i class="bi bi-trash3-fill" style="color:red;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px; border-radius: 10px;"></i>   </form>-->
+                                          <form action="edit_product.jsp" method="POST" style="display:flex;column-gap: 10px !important;">
                                               <input type="hidden" name="product_id"  value="<%= product_id %>">
                     <input type="hidden" name="product"  value="<%= product %>">
                     <input type="hidden" name="brand"  value="<%= brand %>">
@@ -254,9 +253,9 @@
                     <input type="hidden" name="buying"  value="<%= buying %>">
                     <input type="hidden" name="date"  value="<%= expire.substring(0,10) %>">
                     <input type="hidden" name="unit"  value="<%= unit %>">
-                                                        <button class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);padding: 8px;margin: 3px;
+                                                        <button class="bi bi-pen update_open" style="box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);color:var(--green);background:none;padding: 8px;margin: 3px;
 border-radius: 10px;"></button>
-    </form>                             <form action="sale_product.jsp" method="POST">
+    </form>                             <form action="sale_product.jsp" method="POST" style="display:flex;column-gap: 10px !important;">
                                               <input type="hidden" name="product_id"  value="<%= product_id %>">
                     <input type="hidden" name="product"  value="<%= product %>">
                     <input type="hidden" name="brand"  value="<%= brand %>">
@@ -265,7 +264,7 @@ border-radius: 10px;"></button>
                     <input type="hidden" name="buying"  value="<%= buying %>">
                     <input type="hidden" name="date"  value="<%= expire.substring(0,10) %>">
                     <input type="hidden" name="unit"  value="<%= unit %>">
-                                                        <button class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
+                                                        <button class="bi bi-coin selling_open" style="color: rgb(216, 130, 0);background:none;padding: 8px;box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);margin: 3px;
 border-radius: 10px;"></button>
     </form>
                                                     </div>
@@ -368,6 +367,12 @@ margin-top: 20px;
 //                                    }
 //                                });
 //                            });
+                         var element = document.querySelector(".rems");
+                        //  rems.forEach(element => {
+                            if(element.innerHTML>10){
+                                element.style.color="red !important";
+                            }
+                        //  });
                         </script>
                     </body>
 

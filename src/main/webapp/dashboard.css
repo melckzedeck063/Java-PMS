@@ -33,14 +33,17 @@ body {
 .dashboard_grid_container {
     position: relative;
     display: grid;
-    grid-template-columns: 180px auto;
+    grid-template-columns: 220px auto;
 }
 
 .dashboard_grid_container>div:nth-child(1) {
-    background-color: var(--gray_color);
+    background-color: rgb(29, 29, 29);
     animation: 1s fader linear infinite;
     height: 100vh;
     padding: 10px;
+}
+.dashboard_grid_container > div:nth-child(1) a{
+    color:white !important;
 }
 
 .grid_templated {
@@ -66,9 +69,9 @@ rect {
     fill: var(--black) !important;
 }
 
-text {
-    color: var(--milk);
-    fill: var(--milk);
+text:nth-child(1) {
+    color: rgb(100, 100, 100);
+    fill: rgb(100, 100, 100);
 }
 
 path {
@@ -197,7 +200,7 @@ table {
 }
 
 .box_full {
-    background-color: rgba(2, 0, 107, 0.507);
+    background-color: rgba(14, 0, 0, 0.945);
     color: white;
     height: 200px;
 }
@@ -252,7 +255,7 @@ table {
 
 li .dropdown .drop {
     position: absolute;
-    color: var(--milk);
+    color: var(--black);
     margin: 4px;
     transition: .3s ease-in-out;
     transform: rotate(0deg);

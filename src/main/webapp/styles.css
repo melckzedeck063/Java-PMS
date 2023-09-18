@@ -2,13 +2,13 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Old+Permic&family=Ubuntu:wght@300&display=swap');
 :root {
-    --green: rgba(2, 0, 107, 0.507);
-    --blue: rgb(0, 110, 255);
+    --green: rgb(107, 0, 27);
+    --blue: rgb(255, 0, 85);
     --milk: rgb(17, 17, 17);
     --shadow: rgb(221, 202, 245);
     --gray_color: rgb(228, 225, 225);
     --black: rgb(255, 255, 255);
-    --green-slim: rgba(2, 0, 107, 0.507);
+    --green-slim: rgb(107, 0, 9);
 }
 .button{
     text-align: center;
@@ -40,7 +40,7 @@ h6 {
 .title h4 span,
 .title h5 span{
     color: transparent;
-    background: linear-gradient(60deg, rgb(2, 0, 107),var(--green));
+    background: linear-gradient(60deg, var(--green-slim),var(--green));
     background-clip: text;
     font-weight: 900;
     -webkit-background-clip: text;
