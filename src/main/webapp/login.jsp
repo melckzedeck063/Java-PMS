@@ -8,6 +8,9 @@
 <%@ include file="Dbconnection.jsp" %>
 <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 <% response.setHeader("Pragma", "no-cache"); %>
+  <%@ page import="java.security.MessageDigest" %>
+<%@ page import="java.math.BigInteger" %>
+<%@ page import="java.security.NoSuchAlgorithmException" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -121,6 +124,7 @@
 
                 String username = request.getParameter("email");
                 String password = request.getParameter("passcode");
+                String hashedPassword = hashPasswordMD5(password);
 
                 Connection connection = null;
                 PreparedStatement preparedStatement = null;
@@ -137,7 +141,7 @@
                             preparedStatement = connection.prepareStatement(select_query);
 
                             preparedStatement.setString(1, username);
-                            preparedStatement.setString(2, password);
+                            preparedStatement.setString(2, hashedPassword);
 
                             resultSet = preparedStatement.executeQuery();
                             //                connection.close();
@@ -238,7 +242,7 @@
     <div class="container">
         <form class="registration_box" action="" method="POST">
             <div class="reg_items">
-                <div onclick="window.location = 'register.jsp'">Register</div>
+                <!--<div onclick="window.location = 'register.jsp'">Register</div>-->
                 <div class="active" onclick="window.location = 'login.jsp'">Login</div>
             </div>
             <div class="title" style="margin: 20px;margin-top: 50px;">
@@ -279,3 +283,24 @@
 
 
 </html>
+
+
+<%!
+    // Function to hash the password using MD5
+    private String hashPasswordMD5(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(password.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String md5 = number.toString(16);
+
+            // Pad with zeros to ensure it's 32 characters long
+            while (md5.length() < 32) {
+                md5 = "0" + md5;
+            }
+            return md5;
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+%>

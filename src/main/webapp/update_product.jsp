@@ -28,7 +28,7 @@ if (request.getMethod().equals("POST")) {
          if(connection != null){
          if(productName  != "" && brandName != "" && unit  != "" && quantity != "" && expire_date  != ""){
          
-         String update_query = "UPDATE  products SET product_name=?, brand_name=?,buying_price=?,selling_price=?, quantity=?, unit=?, date_expired=? WHERE product_id=?";
+         String update_query = "UPDATE  products SET product_name=?, brand_name=?,buying_price=?,selling_price=?, quantity=?, unit=? WHERE product_id=?";
          
          
          preparedStatement = connection.prepareStatement(update_query);
@@ -38,8 +38,8 @@ if (request.getMethod().equals("POST")) {
          preparedStatement.setString(4,selling_price);
          preparedStatement.setString(5,quantity);
          preparedStatement.setString(6,unit);
-         preparedStatement.setString(7,expire_date);
-         preparedStatement.setString(8,product_id);
+//         preparedStatement.setString(7,expire_date);
+         preparedStatement.setString(7,product_id);
         
          
          int rowsAffected = preparedStatement.executeUpdate(); // Perform the INSERT operation
